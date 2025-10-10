@@ -1,0 +1,172 @@
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+}
+
+:root {
+  --font-family: "IBM Plex Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --line-height: 1.5;
+  --font-weight: 400;
+
+  --bg-color: #121212;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --button-bg: #1a1a1a;
+  --button-color: #fff;
+  --button-hover-bg: #333;
+  --link-hover-color: #535bf2;
+
+  --primary-color: #4caf50;
+  --primary-hover: #43a047;
+  --primary-light: #1b5e20;
+  --error-color: #f44336;
+  --accent-color: #646cff;
+  --hover-accent-color: #535bf2;
+
+  --border-color: #333;
+  --border-color-rgb: 51, 51, 51;
+  --bg-secondary: #1a1a1a;
+
+  --error-hover: #e53935;
+  --warning-color: #ff9800;
+  --warning-hover: #fb8c00;
+
+  --divider-color-light: 100, 149, 237;
+  --divider-color-dark: 51, 51, 51;
+
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #ffffff;
+  --bg-secondary: #f5f6f7;
+  --text-color: #213547;
+  --text-secondary: #5f6368;
+
+  --button-bg: #f0f0f0;
+  --button-color: #213547;
+  --button-hover-bg: #e0e0e0;
+
+  --accent-color: #1976d2;
+  --hover-accent-color: #1565c0;
+  --link-hover-color: #1565c0;
+
+  --primary-color: #1976d2;
+  --primary-hover: #1565c0;
+  --primary-light: #e3f2fd;
+  --error-color: #d32f2f;
+
+  --error-hover: #d32f2f;
+  --warning-color: #ffa726;
+  --warning-hover: #fb8c00;
+
+  --border-color: #e0e0e0;
+  --border-color-rgb: 224, 224, 224;
+  --divider-color: var(--divider-color-light);
+  --menu-icon-filter: brightness(0) invert(0);
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #121212;
+  --bg-secondary: #1a1a1a;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+
+  --button-bg: #1a1a1a;
+  --button-color: #fff;
+  --button-hover-bg: #333;
+
+  --accent-color: #646cff;
+  --hover-accent-color: #535bf2;
+  --link-hover-color: #535bf2;
+
+  --primary-color: #4caf50;
+  --primary-hover: #43a047;
+  --primary-light: #1b5e20;
+
+  --border-color: #333;
+  --border-color-rgb: 51, 51, 51;
+
+  --menu-icon-filter: brightness(0) invert(1);
+
+  --divider-color: var(--divider-color-dark);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight);
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+
+button {
+  border-radius: 6px;
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-family);
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg);
+  transform: scale(1.005);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}

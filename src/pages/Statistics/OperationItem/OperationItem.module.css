@@ -1,0 +1,107 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.type {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.buy {
+  background: rgba(76, 175, 80, 0.12);
+  color: var(--primary-color);
+}
+
+.sell {
+  background: rgba(244, 67, 54, 0.12);
+  color: var(--error-color);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.price,
+.amount {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.amount {
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.total {
+  font-weight: 600;
+  color: var(--text-color);
+  min-width: 70px;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .left {
+    gap: 8px;
+  }
+
+  .total {
+    width: 100%;
+    text-align: left;
+  }
+}

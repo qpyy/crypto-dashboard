@@ -1,0 +1,6 @@
+.pieChartContainer:focus {
+  outline: none !important;
+}
+.pieChartContainer {
+  -webkit-tap-highlight-color: transparent; /* для мобильных устройств */
+}

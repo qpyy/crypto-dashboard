@@ -1,0 +1,65 @@
+.snackbar {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  min-width: 120px;
+  max-width: 320px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+  margin-top: 6px;
+  animation: slideIn 0.25s ease;
+  z-index: 1000;
+  word-break: break-word;
+  background-color: var(--primary-color);
+  font-size: 0.9rem;
+}
+
+.success {
+  background-color: #4caf50;
+}
+.error {
+  background-color: var(--error-color);
+}
+.info {
+  background-color: #535bf2;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-16px) translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(0);
+    opacity: 0.95;
+  }
+}
+
+/* Планшеты (от 768px) */
+@media (min-width: 768px) {
+  .snackbar {
+    min-width: 140px;
+    max-width: 360px;
+    padding: 10px 18px;
+    bottom: 24px;
+    left: 24px;
+  }
+}
+
+/* Десктоп (от 1200px) */
+@media (min-width: 1200px) {
+  .snackbar {
+    min-width: 160px;
+    max-width: 400px;
+    padding: 12px 20px;
+    bottom: 32px;
+    left: 32px;
+  }
+}

@@ -1,0 +1,28 @@
+.chartContainer {
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.chartTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .chartContainer {
+    padding: 0.5rem;
+  }
+
+  .chartTitle {
+    font-size: 1rem;
+  }
+}

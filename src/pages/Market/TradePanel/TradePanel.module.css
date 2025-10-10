@@ -1,0 +1,72 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.input {
+  width: 120px;
+  padding: 6px 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.input[type="number"],
+.input[type="number"]:hover,
+.input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+/* Кнопки +/- */
+.adjust {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  transition: 0.1s;
+}
+
+.adjust:hover {
+  background-color: #e0e0e0;
+}
+
+.adjust:active {
+  transform: scale(0.95);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.actionButtons button {
+  flex: 1;
+}
+
+.sellAllWrapper {
+  width: 100%;
+}
