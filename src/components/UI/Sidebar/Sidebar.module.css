@@ -6,7 +6,8 @@
   height: 100vh;
   background-color: var(--bg-secondary);
   color: var(--text-color);
-  padding: 1rem;
+  padding: calc(1rem + env(safe-area-inset-top)) 1rem calc(1rem + env(safe-area-inset-bottom))
+    calc(1rem + env(safe-area-inset-left));
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   box-shadow: var(--shadow-md);
 
