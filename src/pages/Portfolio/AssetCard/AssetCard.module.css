@@ -79,4 +79,9 @@
   .cardDetails {
     font-size: 0.85rem;
   }
+
+  .cardDetails span {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

@@ -115,6 +115,7 @@
   .wrapper {
     grid-template-columns: 1fr;
     gap: 12px;
+    padding: 12px;
   }
 
   .chartColumn {

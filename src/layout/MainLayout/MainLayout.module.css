@@ -11,8 +11,8 @@
 
 .topbar {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
   z-index: 10;
 }
 
@@ -38,7 +38,7 @@
 .footer {
   width: 100%;
   text-align: center;
-  padding: 1rem 1.5rem 2rem;
+  padding: 1rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
   font-size: 0.85rem;
   color: var(--text-secondary);
   border-top: 1px solid var(--border-color);
@@ -65,6 +65,8 @@
 @media (max-width: 767px) {
   .content {
     padding: 1rem;
+    margin-top: 1rem;
+    align-items: stretch;
   }
 
   .content h1 {

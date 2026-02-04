@@ -85,3 +85,20 @@
 .fullWidth {
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .sm {
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .md {
+    height: 44px;
+    font-size: 1rem;
+  }
+
+  .lg {
+    height: 50px;
+    font-size: 1.1rem;
+  }
+}

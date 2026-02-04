@@ -56,3 +56,19 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+@media (max-width: 767px) {
+  .switch {
+    width: 4rem;
+    height: 2.3rem;
+  }
+
+  .thumb {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .switch input:checked + .slider .thumb {
+    transform: translateX(1.7rem);
+  }
+}

@@ -15,7 +15,8 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
+    const coarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    if (reduceMotion || coarsePointer) return;
 
     const handlePointerMove = (e: PointerEvent) => {
       const x = (e.clientX / window.innerWidth) * 2 - 1;

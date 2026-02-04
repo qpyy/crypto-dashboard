@@ -82,3 +82,21 @@
 .sellAllWrapper {
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .controls {
+    gap: 6px;
+  }
+
+  .input {
+    width: 140px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .adjust {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
