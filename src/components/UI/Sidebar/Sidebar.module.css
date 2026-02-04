@@ -4,6 +4,7 @@
   left: 0;
   width: 250px;
   height: 100vh;
+  height: 100svh;
   background-color: var(--bg-secondary);
   color: var(--text-color);
   padding: calc(1rem + env(safe-area-inset-top)) 1rem calc(1rem + env(safe-area-inset-bottom))
@@ -95,6 +96,7 @@
   flex-grow: 1;
   margin-top: 1rem;
   overflow-y: auto;
+  min-height: 0;
 }
 
 .links ul {
@@ -135,6 +137,7 @@
   font-size: 14px;
   text-align: center;
   box-shadow: var(--shadow-sm);
+  padding: 0.5rem 0.75rem;
 }
 
 .bottom :global(button:hover) {
@@ -174,5 +177,42 @@
   .toggleButton {
     top: 1rem;
     left: 0.5rem;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .sidebar {
+    width: min(60vw, 320px);
+    padding: calc(0.5rem + env(safe-area-inset-top)) 0.75rem
+      calc(0.5rem + env(safe-area-inset-bottom)) calc(0.75rem + env(safe-area-inset-left));
+  }
+
+  .stats {
+    margin-bottom: 0.5rem;
+  }
+
+  .stats h4 {
+    font-size: 12px;
+  }
+
+  .row {
+    font-size: 12px;
+    margin-bottom: 0.25rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .links {
+    margin-top: 0.5rem;
+  }
+
+  .links li {
+    font-size: 13px;
+    padding: 0.2rem 0;
+  }
+
+  .bottom :global(button) {
+    font-size: 13px;
+    margin-bottom: 8px;
+    padding: 0.4rem 0.6rem;
   }
 }
