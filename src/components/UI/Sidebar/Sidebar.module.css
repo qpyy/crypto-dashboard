@@ -5,6 +5,7 @@
   width: 280px;
   height: 100vh;
   height: 100svh;
+  height: 100dvh;
   background-color: var(--bg-secondary);
   color: var(--text-color);
   padding: calc(0.75rem + env(safe-area-inset-top)) 0.9rem
@@ -154,6 +155,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
+  height: 100dvh;
   background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
   z-index: 1000;
