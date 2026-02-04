@@ -1,0 +1,1 @@
+const t=r=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2}).format(r);function n(r){return typeof r!="number"?String(r):r>=1e6?`${(r/1e6).toFixed(1)}M`:r>=1e3?`${(r/1e3).toFixed(1)}K`:r.toFixed(2)}export{n as a,t as f};
