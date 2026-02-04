@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import Sidebar from "../../components/UI/Sidebar/Sidebar";
@@ -40,7 +40,17 @@ export default function MainLayout() {
       </div>
       <div className={styles.contentWrapper}>
         <main className={styles.content}>
-          <Outlet />
+          <Suspense
+            fallback={
+              <div className={styles.pageFallback} role="status" aria-live="polite">
+                <div className={styles.pageSkeleton} />
+                <div className={styles.pageSkeleton} />
+                <div className={`${styles.pageSkeleton} ${styles.pageSkeletonTall}`} />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </main>
         <footer className={styles.footer}>Все права защищены</footer>
       </div>

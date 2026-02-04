@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { useStatistics } from "../../store/statistics/useStatistics";
-import PieChart from "../../components/UI/PieChart/PieChart";
 import AssetCard from "./AssetCard/AssetCard";
 import styles from "./Portfolio.module.css";
+
+const PieChart = lazy(() => import("../../components/UI/PieChart/PieChart"));
 
 export default function Portfolio() {
   const { assetDistribution } = useStatistics();
@@ -45,7 +46,9 @@ export default function Portfolio() {
       <div className={styles.wrapper}>
         <div className={styles.chartWrapper}>
           <div className={styles.chartColumn}>
-            <PieChart data={assetDistribution} />
+            <Suspense fallback={<div className={styles.chartSkeleton} />}>
+              <PieChart data={assetDistribution} />
+            </Suspense>
           </div>
         </div>
 

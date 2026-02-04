@@ -62,6 +62,39 @@
   font-size: 1rem;
 }
 
+.pageFallback {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.pageSkeleton {
+  height: 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    110deg,
+    var(--bg-secondary) 8%,
+    rgba(var(--border-color-rgb), 0.35) 18%,
+    var(--bg-secondary) 33%
+  );
+  background-size: 200% 100%;
+  border: 1px solid var(--border-color);
+  animation: shimmer 1.4s ease infinite;
+}
+
+.pageSkeletonTall {
+  height: 260px;
+}
+
+@keyframes shimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
+
 @media (max-width: 767px) {
   .content {
     padding: 1rem;

@@ -1,10 +1,12 @@
+import { lazy } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Market from "./pages/Market/Market";
-import Statistics from "./pages/Statistics/Statistics";
-import Portfolio from "./pages/Portfolio/Portfolio";
 import MainLayout from "./layout/MainLayout/MainLayout";
-import NotFound from "./pages/NotFound/NotFound";
 import { useMarketPrices } from "./hooks/useMarketPrices";
+
+const Market = lazy(() => import("./pages/Market/Market"));
+const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
+const Portfolio = lazy(() => import("./pages/Portfolio/Portfolio"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 export default function App() {
   useMarketPrices();
