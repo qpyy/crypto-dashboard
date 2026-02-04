@@ -35,6 +35,18 @@
   transition: color 0.3s;
 }
 
+.shortBadge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--error-color);
+  border: 1px solid rgba(244, 67, 54, 0.35);
+  background-color: rgba(244, 67, 54, 0.12);
+}
+
 .cardDetails {
   display: flex;
   flex-direction: column;

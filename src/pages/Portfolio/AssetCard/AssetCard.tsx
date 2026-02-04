@@ -11,9 +11,10 @@ type Props = {
   avgPrice: number;
   currentValue: number;
   profit: number;
+  isShort?: boolean;
 };
 
-const AssetCard: FC<Props> = ({ id, name, amount, avgPrice, currentValue, profit }) => {
+const AssetCard: FC<Props> = ({ id, name, amount, avgPrice, currentValue, profit, isShort }) => {
   const icon = getAssetIcon(id);
 
   return (
@@ -21,6 +22,7 @@ const AssetCard: FC<Props> = ({ id, name, amount, avgPrice, currentValue, profit
       <div className={cardStyles.cardHeader}>
         {icon && <img src={icon} alt={name} className={cardStyles.icon} />}
         <span className={cardStyles.assetName}>{name}</span>
+        {isShort && <span className={cardStyles.shortBadge}>Шорт</span>}
       </div>
 
       <div className={cardStyles.cardDetails}>

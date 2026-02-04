@@ -5,11 +5,14 @@ export type Asset = {
   avgPrice: number;
 };
 
+export type PositionSide = "long" | "short";
+
 export type Operation = {
   operationId: string;
   id: string;
   name: string;
   type: "buy" | "sell";
+  side: PositionSide;
   price: number;
   amount: number;
   total: number;
@@ -19,7 +22,7 @@ export type Operation = {
 export type PortfolioState = {
   portfolio: Asset[];
   operations: Operation[];
-  buy: (id: string, name: string, price: number, amount: number) => void;
-  sell: (id: string, price: number, amount: number) => void;
+  buy: (id: string, name: string, price: number, amount: number, side: PositionSide) => void;
+  sell: (id: string, name: string, price: number, amount: number, side: PositionSide) => void;
   reset: () => void;
 };

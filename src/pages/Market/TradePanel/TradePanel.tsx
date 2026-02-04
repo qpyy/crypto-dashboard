@@ -3,16 +3,21 @@ import Button from "../../../components/UI/Button/Button";
 import { usePortfolio } from "../../../store/portfolio/usePortfolio";
 import { useMarket, selectPrice, selectSelectedAsset } from "../../../store/market/useMarket";
 import { assetNames } from "../../../constants/assets";
+import type { PositionSide } from "../../../types";
 import styles from "./TradePanel.module.css";
 
 export default function TradePanel() {
   const selectedAsset = useMarket(selectSelectedAsset);
   const price = useMarket(selectPrice(selectedAsset));
   const { portfolio, buy, sell } = usePortfolio();
+  const [side, setSide] = useState<PositionSide>("long");
   const [amount, setAmount] = useState(0.0);
   const step = 0.0001;
 
-  const ownedAmount = portfolio.find((a) => a.id === selectedAsset)?.amount || 0;
+  const position = portfolio.find((a) => a.id === selectedAsset);
+  const longAmount = Math.max(position?.amount ?? 0, 0);
+  const shortAmount = Math.max(-(position?.amount ?? 0), 0);
+  const maxCloseAmount = side === "long" ? longAmount : shortAmount;
   const assetName = assetNames[selectedAsset] || selectedAsset;
 
   const decrement = () => setAmount((prev) => Math.max(Math.round((prev - step) * 1e5) / 1e5, 0));
@@ -25,21 +30,50 @@ export default function TradePanel() {
 
   const handleBuy = () => {
     if (!selectedAsset || price <= 0 || amount <= 0) return;
-    buy(selectedAsset, assetName, price, amount);
+    buy(selectedAsset, assetName, price, amount, side);
   };
 
   const handleSell = () => {
     if (!selectedAsset || amount <= 0) return;
-    sell(selectedAsset, price, amount);
+    sell(selectedAsset, assetName, price, amount, side);
   };
 
   const handleSellAll = () => {
-    if (!selectedAsset || ownedAmount <= 0) return;
-    sell(selectedAsset, price, ownedAmount);
+    if (!selectedAsset || maxCloseAmount <= 0) return;
+    if (side === "long") {
+      sell(selectedAsset, assetName, price, maxCloseAmount, side);
+      return;
+    }
+    buy(selectedAsset, assetName, price, maxCloseAmount, side);
   };
+
+  const disableOpen = price <= 0 || amount <= 0;
+  const disableClose = price <= 0 || amount <= 0 || amount > maxCloseAmount;
+  const buyLabel = side === "short" ? "Покрыть" : "Купить";
+  const sellLabel = side === "short" ? "Шорт" : "Продать";
+  const closeAllLabel = side === "short" ? "Покрыть всё" : "Продать всё";
 
   return (
     <div className={styles.panel}>
+      <div className={styles.modeToggle} role="tablist" aria-label="Режим позиции">
+        <button
+          type="button"
+          className={`${styles.modeButton} ${side === "long" ? styles.modeActive : ""}`}
+          onClick={() => setSide("long")}
+          aria-pressed={side === "long"}
+        >
+          Лонг
+        </button>
+        <button
+          type="button"
+          className={`${styles.modeButton} ${side === "short" ? styles.modeActive : ""}`}
+          onClick={() => setSide("short")}
+          aria-pressed={side === "short"}
+        >
+          Шорт
+        </button>
+      </div>
+
       <div className={styles.controls}>
         <button type="button" className={styles.adjust} onClick={decrement}>
           -
@@ -62,17 +96,17 @@ export default function TradePanel() {
           variant="primary"
           size="md"
           onClick={handleBuy}
-          disabled={price <= 0 || amount <= 0}
+          disabled={side === "short" ? disableClose : disableOpen}
         >
-          Купить
+          {buyLabel}
         </Button>
         <Button
           variant="danger"
           size="md"
           onClick={handleSell}
-          disabled={amount <= 0 || amount > ownedAmount}
+          disabled={side === "short" ? disableOpen : disableClose}
         >
-          Продать
+          {sellLabel}
         </Button>
       </div>
 
@@ -82,9 +116,9 @@ export default function TradePanel() {
           variant="warning"
           size="md"
           onClick={handleSellAll}
-          disabled={ownedAmount <= 0}
+          disabled={maxCloseAmount <= 0 || price <= 0}
         >
-          Продать всё
+          {closeAllLabel}
         </Button>
       </div>
     </div>

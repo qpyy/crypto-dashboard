@@ -8,6 +8,14 @@ interface Props {
 
 export default function OperationItem({ op }: Props) {
   const icon = getAssetIcon(op.id);
+  const isShort = op.side === "short";
+  const typeLabel = isShort
+    ? op.type === "sell"
+      ? "Шорт"
+      : "Покрытие"
+    : op.type === "buy"
+      ? "Куплено"
+      : "Продано";
 
   return (
     <li className={styles.item}>
@@ -19,7 +27,7 @@ export default function OperationItem({ op }: Props) {
 
         <div className={styles.meta}>
           <span className={`${styles.type} ${op.type === "buy" ? styles.buy : styles.sell}`}>
-            {op.type === "buy" ? "Куплено" : "Продано"}
+            {typeLabel}
           </span>
           <span className={styles.date}>{new Date(op.date).toLocaleString()}</span>
         </div>

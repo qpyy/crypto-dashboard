@@ -6,6 +6,44 @@
   width: 100%;
 }
 
+.modeToggle {
+  width: 100%;
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--control-border);
+  background-color: var(--control-bg);
+}
+
+.modeButton {
+  flex: 1;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modeButton:hover {
+  color: var(--text-color);
+}
+
+.modeButton:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.modeActive {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-sm);
+}
+
 .controls {
   display: flex;
   align-items: center;

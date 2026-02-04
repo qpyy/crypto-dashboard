@@ -41,13 +41,18 @@ export default function Portfolio() {
       </div>
     );
 
+  const pieData = assetDistribution.map((asset) => ({
+    ...asset,
+    value: Math.abs(asset.value),
+  }));
+
   return (
     <div className={styles.page}>
       <div className={styles.wrapper}>
         <div className={styles.chartWrapper}>
           <div className={styles.chartColumn}>
             <Suspense fallback={<div className={styles.chartSkeleton} />}>
-              <PieChart data={assetDistribution} />
+              <PieChart data={pieData} />
             </Suspense>
           </div>
         </div>
@@ -61,10 +66,11 @@ export default function Portfolio() {
                 key={asset.id}
                 id={asset.id}
                 name={asset.name}
-                amount={asset.amount}
+                amount={Math.abs(asset.amount)}
                 avgPrice={asset.avgPrice}
                 currentValue={asset.value}
                 profit={asset.profit}
+                isShort={asset.amount < 0}
               />
             ))}
           </div>
