@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import { ActiveShape } from "./ActiveShape";
 import type { PieChartData } from "../../../types";
@@ -11,8 +10,6 @@ interface PieChartProps {
 }
 
 export default function PieChartComponent({ data, width = 650, height = 650 }: PieChartProps) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
   return (
     <div
       style={{
@@ -25,7 +22,6 @@ export default function PieChartComponent({ data, width = 650, height = 650 }: P
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
-            activeIndex={activeIndex ?? undefined}
             activeShape={ActiveShape}
             data={data}
             cx="50%"
@@ -34,8 +30,6 @@ export default function PieChartComponent({ data, width = 650, height = 650 }: P
             outerRadius="55%"
             paddingAngle={2}
             dataKey="value"
-            onMouseEnter={(_, index) => setActiveIndex(index)}
-            onMouseLeave={() => setActiveIndex(null)}
             focusable={false}
           >
             {data.map((_, index) => (
