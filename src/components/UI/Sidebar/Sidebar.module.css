@@ -2,13 +2,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 280px;
   height: 100vh;
   height: 100svh;
   background-color: var(--bg-secondary);
   color: var(--text-color);
-  padding: calc(1rem + env(safe-area-inset-top)) 1rem calc(1rem + env(safe-area-inset-bottom))
-    calc(1rem + env(safe-area-inset-left));
+  padding: calc(0.75rem + env(safe-area-inset-top)) 0.9rem
+    calc(0.75rem + env(safe-area-inset-bottom)) calc(0.9rem + env(safe-area-inset-left));
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   box-shadow: var(--shadow-md);
 
@@ -19,6 +19,7 @@
   pointer-events: none;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
   z-index: 1001;
 }
 
@@ -56,7 +57,7 @@
 }
 
 .stats {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .stats h4 {
@@ -94,7 +95,7 @@
 
 .links {
   flex-grow: 1;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   overflow-y: auto;
   min-height: 0;
 }
@@ -124,11 +125,12 @@
   margin-top: auto;
   display: flex;
   justify-content: center;
+  padding-top: 0.5rem;
 }
 
 .bottom :global(button) {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   border: none;
   background-color: var(--error-color);
   color: white;
@@ -137,7 +139,8 @@
   font-size: 14px;
   text-align: center;
   box-shadow: var(--shadow-sm);
-  padding: 0.5rem 0.75rem;
+  padding: 0.55rem 0.75rem;
+  min-height: 44px;
 }
 
 .bottom :global(button:hover) {
@@ -166,7 +169,7 @@
 
 @media (max-width: 767px) {
   .sidebar {
-    width: 70vw;
+    width: min(86vw, 340px);
     border-radius: 0;
   }
 
@@ -182,9 +185,10 @@
 
 @media (max-height: 480px) and (orientation: landscape) {
   .sidebar {
-    width: min(60vw, 320px);
-    padding: calc(0.5rem + env(safe-area-inset-top)) 0.75rem
-      calc(0.5rem + env(safe-area-inset-bottom)) calc(0.75rem + env(safe-area-inset-left));
+    width: min(80vw, 360px);
+    padding: calc(0.5rem + env(safe-area-inset-top)) 0.7rem
+      calc(0.5rem + env(safe-area-inset-bottom)) calc(0.7rem + env(safe-area-inset-left));
+    gap: 0.5rem;
   }
 
   .stats {
@@ -212,7 +216,7 @@
 
   .bottom :global(button) {
     font-size: 13px;
-    margin-bottom: 8px;
     padding: 0.4rem 0.6rem;
+    min-height: 40px;
   }
 }
