@@ -8,6 +8,7 @@ import styles from "./MainLayout.module.css";
 import SnackbarContainer from "../../components/UI/Snackbar/SnackbarContainer";
 import { useSnackbar } from "../../store/snackbar/snackbar";
 import ParallaxScene from "../../components/UI/ParallaxScene/ParallaxScene";
+import Footer from "../../components/UI/Footer/Footer";
 
 export default function MainLayout() {
   const { theme, toggleTheme } = useTheme();
@@ -52,7 +53,7 @@ export default function MainLayout() {
             <Outlet />
           </Suspense>
         </main>
-        <footer className={styles.footer}>Все права защищены</footer>
+        <Footer />
       </div>
       <SnackbarContainer />
     </div>
