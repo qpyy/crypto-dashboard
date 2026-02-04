@@ -8,6 +8,13 @@
   padding: 20px;
   box-sizing: border-box;
   position: relative;
+  z-index: 1;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .chartWrapper {
@@ -37,6 +44,15 @@
   width: 100%;
   max-width: 600px;
   align-items: center;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
 }
 
 .divider {
@@ -74,13 +90,6 @@
 
   .list {
     max-width: 90%;
-  }
-
-  .empty {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 1.1rem;
-    opacity: 0.8;
   }
 
   .divider {

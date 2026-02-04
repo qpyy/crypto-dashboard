@@ -6,12 +6,23 @@
   color: var(--text-color);
   background-color: var(--bg-color);
   box-sizing: border-box;
+  position: relative;
 }
 
 .topbar {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 10;
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
 }
 
 .content {
@@ -22,6 +33,15 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 1.5rem 2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
 }
 
 .content h1 {

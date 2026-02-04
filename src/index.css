@@ -1,5 +1,7 @@
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 :root {
@@ -30,14 +32,31 @@
   --error-hover: #e53935;
   --warning-color: #ff9800;
   --warning-hover: #fb8c00;
+  --success-color: #4caf50;
+  --info-color: var(--accent-color);
 
   --divider-color-light: 100, 149, 237;
   --divider-color-dark: 51, 51, 51;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 2px rgba(3, 7, 18, 0.12), 0 1px 3px rgba(3, 7, 18, 0.08);
+  --shadow-md: 0 6px 16px rgba(3, 7, 18, 0.18);
+  --shadow-lg: 0 12px 30px rgba(3, 7, 18, 0.25);
+
+  --control-bg: var(--bg-secondary);
+  --control-bg-hover: #202020;
+  --control-border: var(--border-color);
+  --control-border-hover: #4b5563;
+  --focus-ring: rgba(100, 108, 255, 0.35);
 
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 :root[data-theme="light"] {
+  color-scheme: light;
   --bg-color: #ffffff;
   --bg-secondary: #f5f6f7;
   --text-color: #213547;
@@ -64,9 +83,14 @@
   --border-color-rgb: 224, 224, 224;
   --divider-color: var(--divider-color-light);
   --menu-icon-filter: brightness(0) invert(0);
+  --control-bg: #ffffff;
+  --control-bg-hover: #f2f3f5;
+  --control-border-hover: #9bb6d3;
+  --focus-ring: rgba(25, 118, 210, 0.35);
 }
 
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --bg-color: #121212;
   --bg-secondary: #1a1a1a;
   --text-color: rgba(255, 255, 255, 0.87);
@@ -90,6 +114,10 @@
   --menu-icon-filter: brightness(0) invert(1);
 
   --divider-color: var(--divider-color-dark);
+  --control-bg: #181818;
+  --control-bg-hover: #202020;
+  --control-border-hover: #4b5563;
+  --focus-ring: rgba(100, 108, 255, 0.35);
 }
 
 html,
@@ -140,7 +168,7 @@ h2 {
 }
 
 button {
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   border: none;
   padding: 0.6em 1.2em;
   font-size: 1rem;
@@ -149,17 +177,45 @@ button {
   background-color: var(--button-bg);
   color: var(--button-color);
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: var(--button-hover-bg);
-  transform: scale(1.005);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .mono {
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@supports (color: color-mix(in srgb, #000 50%, #fff)) {
+  :root {
+    --control-bg-hover: color-mix(in srgb, var(--bg-secondary) 80%, var(--text-color) 5%);
+    --control-border-hover: color-mix(in srgb, var(--accent-color) 40%, var(--border-color));
+    --focus-ring: color-mix(in srgb, var(--accent-color) 45%, transparent);
+  }
 }
 
 @media (max-width: 767px) {

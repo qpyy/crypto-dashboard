@@ -4,7 +4,7 @@ export const assetNames: Record<string, string> = {
   binancecoin: "Binance Coin",
   cardano: "Cardano",
   solana: "Solana",
-  ripple: "Ripple",
+  ripple: "XRP",
   polkadot: "Polkadot",
   dogecoin: "Dogecoin",
   litecoin: "Litecoin",

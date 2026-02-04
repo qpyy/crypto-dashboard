@@ -4,17 +4,18 @@ import { usePrices } from "./usePrices";
 import type { PricesResponse } from "../types";
 
 export const useMarketPrices = () => {
-  const setPrice = useMarket((s) => s.setPrice);
+  const setPrices = useMarket((s) => s.setPrices);
   const { data } = usePrices();
 
   useEffect(() => {
     if (!data) return;
 
-    for (const [id, { usd }] of Object.entries(data as PricesResponse)) {
-      setPrice(id, usd);
-    }
-    setPrice("usd", 1);
-  }, [data, setPrice]);
+    const nextPrices = Object.fromEntries(
+      Object.entries(data as PricesResponse).map(([id, { usd }]) => [id, usd])
+    );
+
+    setPrices({ ...nextPrices, usd: 1 });
+  }, [data, setPrices]);
 
   return data;
 };

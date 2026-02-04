@@ -1,0 +1,42 @@
+.scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  --px: 0;
+  --py: 0;
+  --grid-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="light"] .scene {
+  --grid-color: rgba(0, 0, 0, 0.12);
+}
+
+.grid {
+  position: absolute;
+  inset: -10%;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 110px 110px;
+  opacity: 0.22;
+  transform: translate3d(calc(var(--px) * 28px), calc(var(--py) * 28px), 0) skewY(-1deg);
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid {
+    transform: none;
+  }
+}
+
+@supports (color: color-mix(in srgb, #000 50%, #fff)) {
+  .scene {
+    --grid-color: color-mix(in srgb, var(--text-color) 16%, transparent);
+  }
+
+  :root[data-theme="light"] .scene {
+    --grid-color: color-mix(in srgb, var(--text-color) 22%, transparent);
+  }
+}

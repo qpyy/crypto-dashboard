@@ -47,6 +47,7 @@ export default function DashboardHeader() {
           value={selectedAsset}
           options={options}
           onChange={setSelectedAsset}
+          ariaLabel="Выбор актива"
         />
       ),
     },

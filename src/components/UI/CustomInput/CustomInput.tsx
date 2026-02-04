@@ -1,5 +1,4 @@
-import { forwardRef, type InputHTMLAttributes } from "react";
-import clsx from "clsx";
+import { forwardRef, useId, type InputHTMLAttributes } from "react";
 import styles from "./CustomInput.module.css";
 
 interface CustomInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
@@ -10,14 +9,22 @@ interface CustomInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "
 
 const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
   ({ label, error, type = "text", onChange, className, ...props }, ref) => {
+    const internalId = useId();
+    const inputId = props.id ?? internalId;
+
     return (
-      <div className={clsx(styles.wrapper, className)}>
-        {label && <label className={styles.label}>{label}</label>}
+      <div className={[styles.wrapper, className ?? ""].filter(Boolean).join(" ")}>
+        {label && (
+          <label className={styles.label} htmlFor={inputId}>
+            {label}
+          </label>
+        )}
 
         <input
           ref={ref}
           type={type}
-          className={clsx(styles.input, { [styles.error]: !!error })}
+          id={inputId}
+          className={[styles.input, error ? styles.error : ""].filter(Boolean).join(" ")}
           onChange={(e) => onChange?.(e.target.value)}
           {...props}
         />

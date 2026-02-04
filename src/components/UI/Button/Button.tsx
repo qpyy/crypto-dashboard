@@ -1,6 +1,5 @@
 import React, { type ButtonHTMLAttributes } from "react";
 import styles from "./Button.module.css";
-import clsx from "clsx";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "danger" | "warning";
@@ -19,13 +18,15 @@ const Button: React.FC<ButtonProps> = ({
 }) => (
   <button
     type={type}
-    className={clsx(
+    className={[
       styles.button,
       styles[variant],
       styles[size],
-      fullWidth && styles.fullWidth,
-      className
-    )}
+      fullWidth ? styles.fullWidth : "",
+      className ?? "",
+    ]
+      .filter(Boolean)
+      .join(" ")}
     {...props}
   >
     {children}

@@ -60,6 +60,7 @@ export default function OperationsFilter({ operations, onFilterChange }: Props) 
         value={filters.type}
         options={TYPE_OPTIONS}
         onChange={(val) => handleChange("type", val)}
+        ariaLabel="Тип операции"
       />
 
       <CustomInput

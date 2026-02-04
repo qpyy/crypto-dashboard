@@ -3,5 +3,5 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 1rem;
-  align-items: end;
+  align-items: flex-end;
 }

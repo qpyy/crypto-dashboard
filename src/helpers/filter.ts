@@ -7,9 +7,18 @@ export interface Filters {
   dateTo: string;
 }
 
-const toStartOfDay = (dateStr: string) => new Date(dateStr).setHours(0, 0, 0, 0);
+const parseLocalDate = (dateStr: string) => {
+  const parts = dateStr.split("-").map(Number);
+  if (parts.length !== 3 || parts.some((n) => Number.isNaN(n))) {
+    return new Date(dateStr);
+  }
+  const [year, month, day] = parts;
+  return new Date(year, month - 1, day);
+};
 
-const toEndOfDay = (dateStr: string) => new Date(dateStr).setHours(23, 59, 59, 999);
+const toStartOfDay = (dateStr: string) => parseLocalDate(dateStr).setHours(0, 0, 0, 0);
+
+const toEndOfDay = (dateStr: string) => parseLocalDate(dateStr).setHours(23, 59, 59, 999);
 
 export const filterOperations = (operations: Operation[], filters: Filters) => {
   const fromTimestamp = filters.dateFrom ? toStartOfDay(filters.dateFrom) : null;

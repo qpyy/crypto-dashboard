@@ -3,26 +3,14 @@ import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import ResetButton from "../../ResetButton/ResetButton";
 import { useMarket, selectPrices } from "../../../store/market/useMarket";
+import { assetNames, ASSETS } from "../../../constants/assets";
 import Menu from "../../../assets/icons/Menu.svg";
-
-const assetNames: Record<string, string> = {
-  bitcoin: "Bitcoin",
-  ethereum: "Ethereum",
-  binancecoin: "Binance Coin",
-  cardano: "Cardano",
-  solana: "Solana",
-  ripple: "XRP",
-  polkadot: "Polkadot",
-  dogecoin: "Dogecoin",
-  litecoin: "Litecoin",
-  chainlink: "Chainlink",
-};
 
 export default function Sidebar() {
   const prices = useMarket(selectPrices);
   const [open, setOpen] = useState(false);
 
-  const topAssets = Object.keys(prices).slice(1, 6);
+  const topAssets = ASSETS.filter((id) => prices[id] !== undefined).slice(0, 5);
 
   return (
     <>

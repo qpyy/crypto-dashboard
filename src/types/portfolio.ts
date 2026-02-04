@@ -6,6 +6,7 @@ export type Asset = {
 };
 
 export type Operation = {
+  operationId: string;
   id: string;
   name: string;
   type: "buy" | "sell";

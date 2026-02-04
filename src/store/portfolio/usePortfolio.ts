@@ -1,7 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { v4 as uuidv4 } from "uuid";
 import type { Asset, Operation, PortfolioState } from "../../types";
 import { useSnackbar } from "../snackbar/snackbar";
+
+const MAX_OPERATIONS = 1000;
 
 export const usePortfolio = create<PortfolioState>()(
   persist(
@@ -41,6 +44,7 @@ export const usePortfolio = create<PortfolioState>()(
           ];
 
           const operation: Operation = {
+            operationId: uuidv4(),
             id,
             name,
             type: "buy",
@@ -53,9 +57,11 @@ export const usePortfolio = create<PortfolioState>()(
           const { showSnackbar } = useSnackbar.getState();
           showSnackbar(`Вы купили ${amount} ${name} за $${cost.toFixed(2)}`, "success");
 
+          const nextOperations = [...state.operations, operation].slice(-MAX_OPERATIONS);
+
           return {
             portfolio: newPortfolio,
-            operations: [...state.operations, operation],
+            operations: nextOperations,
           };
         }),
 
@@ -89,6 +95,7 @@ export const usePortfolio = create<PortfolioState>()(
           ];
 
           const operation: Operation = {
+            operationId: uuidv4(),
             id,
             name: existing.name,
             type: "sell",
@@ -105,9 +112,11 @@ export const usePortfolio = create<PortfolioState>()(
             "info"
           );
 
+          const nextOperations = [...state.operations, operation].slice(-MAX_OPERATIONS);
+
           return {
             portfolio: newPortfolio,
-            operations: [...state.operations, operation],
+            operations: nextOperations,
           };
         }),
 
@@ -117,6 +126,17 @@ export const usePortfolio = create<PortfolioState>()(
           operations: [],
         }),
     }),
-    { name: "portfolio-storage" }
+    {
+      name: "portfolio-storage",
+      version: 1,
+      migrate: (state) => {
+        if (!state) return state;
+        const typedState = state as PortfolioState;
+        const operations = typedState.operations?.map((op) =>
+          op.operationId ? op : { ...op, operationId: uuidv4() }
+        );
+        return { ...typedState, operations };
+      },
+    }
   )
 );

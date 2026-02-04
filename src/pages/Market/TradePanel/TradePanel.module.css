@@ -16,9 +16,13 @@
   width: 120px;
   padding: 6px 10px;
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--control-bg);
+  color: var(--text-color);
   font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .input[type="number"]::-webkit-outer-spin-button,
@@ -36,10 +40,10 @@
 .adjust {
   width: 32px;
   height: 32px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #f5f5f5;
-  color: #333;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--control-bg);
+  color: var(--text-color);
   font-weight: bold;
   cursor: pointer;
   display: flex;
@@ -50,11 +54,19 @@
 }
 
 .adjust:hover {
-  background-color: #e0e0e0;
+  background-color: var(--control-bg-hover);
+  border-color: var(--control-border-hover);
 }
 
 .adjust:active {
   transform: scale(0.95);
+}
+
+.adjust:focus-visible,
+.input:focus,
+.input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .actionButtons {

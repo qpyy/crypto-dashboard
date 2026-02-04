@@ -7,6 +7,7 @@ import { useTheme } from "../../store/theme/useTheme";
 import styles from "./MainLayout.module.css";
 import SnackbarContainer from "../../components/UI/Snackbar/SnackbarContainer";
 import { useSnackbar } from "../../store/snackbar/snackbar";
+import ParallaxScene from "../../components/UI/ParallaxScene/ParallaxScene";
 
 export default function MainLayout() {
   const { theme, toggleTheme } = useTheme();
@@ -26,6 +27,7 @@ export default function MainLayout() {
 
   return (
     <div className={styles.layout}>
+      <ParallaxScene />
       <Sidebar />
       <div className={styles.topbar}>
         <Toggle
@@ -33,11 +35,15 @@ export default function MainLayout() {
           onChange={toggleTheme}
           onIcon={<IoMoonOutline size={12} />}
           offIcon={<IoSunnyOutline size={12} />}
+          ariaLabel="Переключить тему"
         />
       </div>
-      <main className={styles.content}>
-        <Outlet />
-      </main>
+      <div className={styles.contentWrapper}>
+        <main className={styles.content}>
+          <Outlet />
+        </main>
+        <footer className={styles.footer}>Все права защищены</footer>
+      </div>
       <SnackbarContainer />
     </div>
   );

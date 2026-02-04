@@ -10,6 +10,11 @@ export const useMarket = create<MarketState>((set) => ({
       prices: { ...state.prices, [id]: price },
     })),
 
+  setPrices: (prices) =>
+    set((state) => ({
+      prices: { ...state.prices, ...prices },
+    })),
+
   setSelectedAsset: (id) => set({ selectedAsset: id }),
 }));
 

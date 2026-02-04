@@ -26,16 +26,27 @@
 .selected {
   height: 38px;
   padding: 0 10px;
-  border-radius: 6px;
-  background-color: var(--bg-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--control-bg);
   color: var(--text-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-sizing: border-box;
+}
+
+.selected:hover {
+  background-color: var(--control-bg-hover);
+  border-color: var(--control-border-hover);
+}
+
+.selected:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .arrow {
@@ -58,9 +69,9 @@
   padding: 0;
   position: absolute;
   width: 100%;
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
   max-height: 300px;
   overflow-y: auto;
   opacity: 0;
@@ -68,6 +79,7 @@
   z-index: 10;
   margin-top: 0.3rem;
   pointer-events: none;
+  box-shadow: var(--shadow-md);
 
   scrollbar-width: thin;
   scrollbar-color: var(--primary-color) var(--bg-color);
@@ -106,5 +118,12 @@
 }
 
 .option:hover {
-  background-color: var(--border-color);
+  background-color: var(--primary-light);
+  background-color: color-mix(in srgb, var(--primary-color) 12%, transparent);
+}
+
+.option[aria-selected="true"] {
+  background-color: var(--primary-light);
+  background-color: color-mix(in srgb, var(--primary-color) 18%, transparent);
+  font-weight: 600;
 }

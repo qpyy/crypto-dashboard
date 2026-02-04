@@ -17,7 +17,7 @@ export default function OperationsList({ operations }: Props) {
         .slice()
         .reverse()
         .map((op) => (
-          <OperationItem key={op.date + op.id} op={op} />
+          <OperationItem key={op.operationId} op={op} />
         ))}
     </ul>
   );
