@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111315" />
+      <stop offset="100%" stop-color="#1b1f23" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" />
+  <rect x="60" y="60" width="1080" height="555" rx="24" fill="#14171a" stroke="#2a2f36" />
+  <text x="600" y="320" fill="#c9d1d9" font-size="36" font-family="IBM Plex Sans, Arial, sans-serif" text-anchor="middle">
+    Portfolio — Screenshot Placeholder
+  </text>
+  <text x="600" y="370" fill="#8b949e" font-size="18" font-family="IBM Plex Sans, Arial, sans-serif" text-anchor="middle">
+    Replace with real screenshot
+  </text>
+</svg>
