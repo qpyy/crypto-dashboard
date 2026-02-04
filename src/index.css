@@ -129,6 +129,7 @@ body {
   font-weight: var(--font-weight);
   min-width: 320px;
   min-height: 100vh;
+  min-height: 100svh;
   background-color: var(--bg-color);
   color: var(--text-color);
   text-rendering: optimizeLegibility;
