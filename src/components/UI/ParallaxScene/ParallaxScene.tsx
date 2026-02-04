@@ -12,6 +12,7 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
   const target = useRef({ x: 0, y: 0 });
   const current = useRef({ x: 0, y: 0 });
   const rafId = useRef<number | null>(null);
+  const baselineOrientation = useRef<{ beta: number; gamma: number } | null>(null);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,11 +35,41 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
       setTarget(x, y);
     };
 
+    const getOrientationAngle = () => {
+      if (typeof screen !== "undefined" && screen.orientation) {
+        return screen.orientation.angle;
+      }
+      const legacy = (window as Window & { orientation?: number }).orientation;
+      return typeof legacy === "number" ? legacy : 0;
+    };
+
+    const resetBaseline = () => {
+      baselineOrientation.current = null;
+    };
+
     const handleOrientation = (e: DeviceOrientationEvent) => {
       if (e.beta === null || e.gamma === null) return;
-      const x = clamp(e.gamma / 30, -1, 1);
-      const y = clamp(e.beta / 30, -1, 1);
-      setTarget(x, y);
+      const beta = e.beta;
+      const gamma = e.gamma;
+
+      if (!baselineOrientation.current) {
+        baselineOrientation.current = { beta, gamma };
+      }
+
+      let x = (gamma - baselineOrientation.current.gamma) / 30;
+      let y = (beta - baselineOrientation.current.beta) / 30;
+
+      const angle = getOrientationAngle();
+      if (angle === 90) {
+        [x, y] = [y, -x];
+      } else if (angle === -90 || angle === 270) {
+        [x, y] = [-y, x];
+      } else if (angle === 180) {
+        x = -x;
+        y = -y;
+      }
+
+      setTarget(clamp(x, -1, 1), clamp(y, -1, 1));
     };
 
     const enablePointer = () => {
@@ -50,6 +81,10 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
     const enableOrientation = () => {
       if (orientationActive || cancelled) return;
       window.addEventListener("deviceorientation", handleOrientation, { passive: true });
+      window.addEventListener("orientationchange", resetBaseline, { passive: true });
+      if (typeof screen !== "undefined" && screen.orientation) {
+        screen.orientation.addEventListener("change", resetBaseline);
+      }
       orientationActive = true;
     };
 
@@ -128,6 +163,10 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
       cancelled = true;
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("deviceorientation", handleOrientation);
+      window.removeEventListener("orientationchange", resetBaseline);
+      if (typeof screen !== "undefined" && screen.orientation) {
+        screen.orientation.removeEventListener("change", resetBaseline);
+      }
       window.removeEventListener("touchend", onFirstInteraction);
       window.removeEventListener("click", onFirstInteraction);
       if (rafId.current) cancelAnimationFrame(rafId.current);
