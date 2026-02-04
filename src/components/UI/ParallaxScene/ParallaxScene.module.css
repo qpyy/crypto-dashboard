@@ -23,6 +23,7 @@
   opacity: 0.22;
   transform: translate3d(calc(var(--px) * 28px), calc(var(--py) * 28px), 0) skewY(-1deg);
   transition: transform 0.2s ease;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
