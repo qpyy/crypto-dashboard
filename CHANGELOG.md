@@ -7,6 +7,20 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 ## [Unreleased]
 
 ### Added
+- No changes yet.
+
+### Changed
+- No changes yet.
+
+### Fixed
+- No changes yet.
+
+### Removed
+- No changes yet.
+
+## [0.2.0] - 2026-03-08
+
+### Added
 - Pure trading domain module in `src/domain/trading`.
 - Trading engine documentation in `docs/trading-engine.md`.
 
