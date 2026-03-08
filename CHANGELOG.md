@@ -19,6 +19,7 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 - Trade amount/price validation hardened in UI and domain trading layer to reject non-finite input values.
 - Sidebar overlay behavior updated to preserve blur while keeping consistent transparency on hover/focus.
 - Git ignore rules extended for environment files.
+- Project package manager migrated from npm to pnpm (`pnpm-lock.yaml`, Husky/CI/docs updated).
 
 ### Fixed
 
@@ -30,6 +31,7 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 ### Removed
 
 - Tracked `.env` file removed from repository history of active files (kept local only).
+- `package-lock.json` removed in favor of `pnpm-lock.yaml`.
 
 ## [0.3.0] - 2026-03-08
 

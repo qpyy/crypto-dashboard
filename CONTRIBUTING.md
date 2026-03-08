@@ -8,13 +8,13 @@
    - `chore/<short-description>`
 2. Make one logical change per commit.
 3. Run checks before push:
-   - `npm run format:check`
-   - `npm run lint`
-   - `npm run typecheck`
-   - `npm run build`
+   - `corepack pnpm run format:check`
+   - `corepack pnpm run lint`
+   - `corepack pnpm run typecheck`
+   - `corepack pnpm run build`
 4. Update `CHANGELOG.md` in `Unreleased` for every user-visible change.
 5. Open PR or merge to `main`.
-6. Deploy with `npm run deploy` after merge to `main`.
+6. Deploy with `corepack pnpm run deploy` after merge to `main`.
 
 ## Quality Gates (Husky)
 
@@ -25,7 +25,7 @@ Hooks are configured via Husky and run automatically:
 
 Setup command:
 
-`npm run prepare`
+`corepack pnpm run prepare`
 
 ## Commit Message Format
 

@@ -30,8 +30,8 @@
 ## Быстрый старт (локально)
 
 ```bash
-npm install
-npm run dev
+corepack pnpm install
+corepack pnpm run dev
 ```
 
 Приложение поднимется локально на Vite dev server.
@@ -54,15 +54,15 @@ VITE_API_URL=https://api.coingecko.com/api/v3
 ## Скрипты
 
 ```bash
-npm run dev      # запуск в режиме разработки
-npm run build    # production сборка
-npm run preview  # локальный предпросмотр сборки
-npm run typecheck # проверка TypeScript
-npm run lint     # eslint
-npm run lint:fix # автофикс ESLint
-npm run format   # форматирование Prettier
-npm run format:check # проверка форматирования
-npm run deploy   # деплой на gh-pages
+corepack pnpm run dev      # запуск в режиме разработки
+corepack pnpm run build    # production сборка
+corepack pnpm run preview  # локальный предпросмотр сборки
+corepack pnpm run typecheck # проверка TypeScript
+corepack pnpm run lint     # eslint
+corepack pnpm run lint:fix # автофикс ESLint
+corepack pnpm run format   # форматирование Prettier
+corepack pnpm run format:check # проверка форматирования
+corepack pnpm run deploy   # деплой на gh-pages
 ```
 
 ## Качество и история изменений
@@ -85,7 +85,7 @@ git config commit.template .gitmessage.txt
 Инициализация git-hooks:
 
 ```bash
-npm run prepare
+corepack pnpm run prepare
 ```
 
 ## Деплой на GitHub Pages
@@ -94,8 +94,8 @@ npm run prepare
 Если репозиторий называется иначе, поменяйте `base`.
 
 ```bash
-npm run build
-npm run deploy
+corepack pnpm run build
+corepack pnpm run deploy
 ```
 
 Используется `HashRouter`, поэтому маршруты работают корректно на GitHub Pages.
