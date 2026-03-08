@@ -13,7 +13,7 @@
   max-width: 320px;
   padding: 8px 14px;
   border-radius: var(--radius-sm);
-  color: #fff;
+  color: var(--on-solid-color);
   font-weight: 500;
   display: flex;
   justify-content: space-between;
@@ -24,14 +24,20 @@
   word-break: break-word;
   background-color: var(--primary-color);
   font-size: 0.9rem;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .success {
   background-color: var(--success-color);
 }
+
 .error {
   background-color: var(--error-color);
 }
+
 .info {
   background-color: var(--info-color);
 }
@@ -41,13 +47,14 @@
     transform: translateX(-16px) translateY(16px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0) translateY(0);
     opacity: 0.95;
   }
 }
 
-/* Планшеты (от 768px) */
+/* Tablets (from 768px) */
 @media (min-width: 768px) {
   .stack {
     bottom: 24px;
@@ -61,7 +68,7 @@
   }
 }
 
-/* Десктоп (от 1200px) */
+/* Desktop (from 1200px) */
 @media (min-width: 1200px) {
   .stack {
     bottom: 32px;

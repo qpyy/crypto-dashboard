@@ -5,4 +5,7 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   border-top: 1px solid var(--border-color);
+  transition:
+    color var(--theme-transition),
+    border-color var(--theme-transition);
 }

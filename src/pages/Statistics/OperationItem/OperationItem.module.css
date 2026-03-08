@@ -9,7 +9,10 @@
   box-shadow: var(--shadow-sm);
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color var(--theme-transition),
+    border-color var(--theme-transition),
+    color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .item:hover {
@@ -27,6 +30,7 @@
 .name {
   font-weight: 600;
   color: var(--text-color);
+  transition: color var(--theme-transition);
 }
 
 .nameWrapper {
@@ -48,22 +52,26 @@
   align-items: center;
   color: var(--text-secondary);
   font-size: 0.85rem;
+  transition: color var(--theme-transition);
 }
 
 .type {
   padding: 4px 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 600;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 .buy {
-  background: rgba(76, 175, 80, 0.12);
+  background: var(--status-positive-bg);
   color: var(--primary-color);
 }
 
 .sell {
-  background: rgba(244, 67, 54, 0.12);
+  background: var(--status-negative-bg);
   color: var(--error-color);
 }
 
@@ -85,6 +93,7 @@
 .amount {
   font-weight: 600;
   color: var(--text-color);
+  transition: color var(--theme-transition);
 }
 
 .amount {
@@ -97,6 +106,7 @@
   color: var(--text-color);
   min-width: 70px;
   text-align: right;
+  transition: color var(--theme-transition);
 }
 
 @media (max-width: 480px) {

@@ -9,10 +9,10 @@
   color: var(--text-color);
   box-shadow: var(--shadow-sm);
   transition:
-    background-color 0.3s,
-    color 0.3s,
+    background-color var(--theme-transition),
+    color var(--theme-transition),
     transform 0.2s,
-    box-shadow 0.2s;
+    box-shadow var(--theme-transition);
 }
 
 .card:hover {
@@ -36,7 +36,7 @@
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text-color);
-  transition: color 0.3s;
+  transition: color var(--theme-transition);
 }
 
 .shortBadge {
@@ -47,8 +47,12 @@
   padding: 2px 8px;
   border-radius: 999px;
   color: var(--error-color);
-  border: 1px solid rgba(244, 67, 54, 0.35);
-  background-color: rgba(244, 67, 54, 0.12);
+  border: 1px solid var(--status-negative-border);
+  background-color: var(--status-negative-bg);
+  transition:
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    background-color var(--theme-transition);
 }
 
 .cardDetails {
@@ -57,7 +61,7 @@
   gap: 4px;
   font-size: 0.9rem;
   color: var(--text-secondary);
-  transition: color 0.3s;
+  transition: color var(--theme-transition);
 }
 
 .cardDetails span {
@@ -69,13 +73,13 @@
 .profit {
   color: var(--primary-color);
   font-weight: 600;
-  transition: color 0.3s;
+  transition: color var(--theme-transition);
 }
 
 .loss {
   color: var(--error-color);
   font-weight: 600;
-  transition: color 0.3s;
+  transition: color var(--theme-transition);
 }
 
 @media (max-width: 767px) {

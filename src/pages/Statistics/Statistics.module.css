@@ -25,17 +25,22 @@
   padding: 12px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  transition:
+    background-color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .label {
   color: var(--text-secondary);
   font-size: 0.85rem;
+  transition: color var(--theme-transition);
 }
 
 .value {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 6px;
+  transition: color var(--theme-transition);
 }
 
 .operations {

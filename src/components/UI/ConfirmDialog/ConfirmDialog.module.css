@@ -4,6 +4,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,9 +19,12 @@
   border: 0;
   margin: 0;
   padding: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: var(--overlay-bg-strong);
   backdrop-filter: blur(3px);
   cursor: pointer;
+  transition:
+    background-color var(--theme-transition),
+    backdrop-filter var(--theme-transition);
 }
 
 @keyframes fadeIn {
@@ -41,12 +46,16 @@
   width: 90%;
   box-shadow: var(--shadow-lg);
   text-align: center;
+  transition:
+    background-color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .message {
   color: var(--text-color);
   font-size: 16px;
   margin-bottom: 24px;
+  transition: color var(--theme-transition);
 }
 
 .buttons {

@@ -10,6 +10,9 @@
   padding: 1rem 1.5rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+  transition:
+    background-color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .card {
@@ -31,6 +34,7 @@
   width: 1px;
   background-color: var(--border-color);
   right: -0.25rem;
+  transition: background-color var(--theme-transition);
 }
 
 .card:nth-child(6n)::after {
@@ -68,6 +72,7 @@
     left: -0.25rem;
     width: 1px;
     background-color: var(--border-color);
+    transition: background-color var(--theme-transition);
   }
 }
 
@@ -78,6 +83,7 @@
   color: var(--text-secondary);
   min-height: 1.4em;
   line-height: 1.4em;
+  transition: color var(--theme-transition);
 }
 
 .cardContent {
@@ -93,5 +99,5 @@
   font-size: 1rem;
   color: var(--text-color);
   margin: 0;
-  transition: color 0.3s;
+  transition: color var(--theme-transition);
 }

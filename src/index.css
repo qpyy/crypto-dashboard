@@ -19,11 +19,14 @@
   --link-hover-color: #535bf2;
 
   --primary-color: #4caf50;
+  --primary-color-rgb: 76, 175, 80;
   --primary-hover: #43a047;
   --primary-light: #1b5e20;
   --error-color: #f44336;
+  --error-color-rgb: 244, 67, 54;
   --accent-color: #646cff;
   --hover-accent-color: #535bf2;
+  --on-solid-color: #ffffff;
 
   --border-color: #333;
   --border-color-rgb: 51, 51, 51;
@@ -33,7 +36,13 @@
   --warning-color: #ff9800;
   --warning-hover: #fb8c00;
   --success-color: #4caf50;
+  --success-color-rgb: 76, 175, 80;
   --info-color: var(--accent-color);
+  --status-positive-bg: rgba(var(--success-color-rgb), 0.12);
+  --status-negative-bg: rgba(var(--error-color-rgb), 0.12);
+  --status-negative-border: rgba(var(--error-color-rgb), 0.35);
+  --overlay-bg: rgba(0, 0, 0, 0.35);
+  --overlay-bg-strong: rgba(0, 0, 0, 0.5);
 
   --divider-color-light: 100, 149, 237;
   --divider-color-dark: 51, 51, 51;
@@ -51,11 +60,17 @@
   --control-border: var(--border-color);
   --control-border-hover: #4b5563;
   --focus-ring: rgba(100, 108, 255, 0.35);
+  --input-date-indicator-filter: brightness(0) saturate(100%) invert(92%) sepia(0%) saturate(0%)
+    hue-rotate(0deg) brightness(1);
+  --theme-transition-duration: 220ms;
+  --theme-transition-easing: ease;
+  --theme-transition: var(--theme-transition-duration) var(--theme-transition-easing);
 
   transition:
-    background-color 0.3s,
-    color 0.3s,
-    border-color 0.3s;
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 :root[data-theme="light"] {
@@ -74,18 +89,29 @@
   --link-hover-color: #1565c0;
 
   --primary-color: #1976d2;
+  --primary-color-rgb: 25, 118, 210;
   --primary-hover: #1565c0;
   --primary-light: #e3f2fd;
   --error-color: #d32f2f;
+  --error-color-rgb: 211, 47, 47;
 
   --error-hover: #d32f2f;
   --warning-color: #ffa726;
   --warning-hover: #fb8c00;
+  --on-solid-color: #ffffff;
+  --success-color-rgb: 76, 175, 80;
+  --status-positive-bg: rgba(var(--success-color-rgb), 0.12);
+  --status-negative-bg: rgba(var(--error-color-rgb), 0.12);
+  --status-negative-border: rgba(var(--error-color-rgb), 0.35);
+  --overlay-bg: rgba(0, 0, 0, 0.35);
+  --overlay-bg-strong: rgba(0, 0, 0, 0.5);
 
   --border-color: #e0e0e0;
   --border-color-rgb: 224, 224, 224;
   --divider-color: var(--divider-color-light);
   --menu-icon-filter: brightness(0) invert(0);
+  --input-date-indicator-filter: brightness(0) saturate(100%) invert(37%) sepia(0%) saturate(0%)
+    hue-rotate(0deg) brightness(1);
   --control-bg: #ffffff;
   --control-bg-hover: #f2f3f5;
   --control-border-hover: #9bb6d3;
@@ -108,13 +134,24 @@
   --link-hover-color: #535bf2;
 
   --primary-color: #4caf50;
+  --primary-color-rgb: 76, 175, 80;
   --primary-hover: #43a047;
   --primary-light: #1b5e20;
+  --on-solid-color: #ffffff;
+  --success-color-rgb: 76, 175, 80;
+  --error-color-rgb: 244, 67, 54;
+  --status-positive-bg: rgba(var(--success-color-rgb), 0.12);
+  --status-negative-bg: rgba(var(--error-color-rgb), 0.12);
+  --status-negative-border: rgba(var(--error-color-rgb), 0.35);
+  --overlay-bg: rgba(0, 0, 0, 0.35);
+  --overlay-bg-strong: rgba(0, 0, 0, 0.5);
 
   --border-color: #333;
   --border-color-rgb: 51, 51, 51;
 
   --menu-icon-filter: brightness(0) invert(1);
+  --input-date-indicator-filter: brightness(0) saturate(100%) invert(92%) sepia(0%) saturate(0%)
+    hue-rotate(0deg) brightness(1);
 
   --divider-color: var(--divider-color-dark);
   --control-bg: #181818;
@@ -139,15 +176,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
-    background-color 0.3s,
-    color 0.3s;
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 a {
   font-weight: 500;
   color: var(--accent-color);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--theme-transition);
 }
 
 a:hover {
@@ -184,10 +221,10 @@ button {
   color: var(--button-color);
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition),
     transform 0.2s ease;
 }
 

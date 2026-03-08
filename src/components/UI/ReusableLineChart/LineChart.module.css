@@ -9,6 +9,10 @@
   align-items: center;
   box-sizing: border-box;
   padding: 1rem;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .chartTitle {

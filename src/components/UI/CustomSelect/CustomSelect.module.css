@@ -35,10 +35,10 @@
   justify-content: space-between;
   align-items: center;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition);
   box-sizing: border-box;
 }
 
@@ -59,7 +59,9 @@
   border-width: 0 2px 2px 0;
   padding: 3px;
   transform: rotate(45deg);
-  transition: transform 0.3s;
+  transition:
+    transform 0.3s,
+    border-color var(--theme-transition);
 }
 
 .arrow.open {
@@ -80,7 +82,10 @@
   opacity: 0;
   transition:
     max-height 0.3s ease,
-    opacity 0.3s ease;
+    opacity 0.3s ease,
+    background-color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition);
   z-index: 10;
   margin-top: 0.3rem;
   pointer-events: none;
@@ -96,12 +101,12 @@
 
 .options::-webkit-scrollbar-track {
   background: var(--bg-color);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 }
 
 .options::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
 }
 
@@ -119,7 +124,9 @@
 .option {
   padding: 0.4rem 0.6rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 .option:hover {

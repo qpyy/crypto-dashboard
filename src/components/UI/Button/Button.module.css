@@ -7,9 +7,9 @@
   font-size: 1rem;
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease,
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    box-shadow var(--theme-transition),
     transform 0.2s ease;
   text-align: center;
   color: var(--button-color);
@@ -26,7 +26,7 @@
 
 .primary {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--on-solid-color);
 }
 .primary:hover {
   background-color: var(--primary-hover);
@@ -35,7 +35,7 @@
 
 .secondary {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--on-solid-color);
 }
 .secondary:hover {
   background-color: var(--hover-accent-color);
@@ -44,19 +44,19 @@
 
 .danger {
   background-color: var(--error-color);
-  color: white;
+  color: var(--on-solid-color);
 }
 .danger:hover {
-  background-color: var(--error-hover, #e53935);
+  background-color: var(--error-hover);
   box-shadow: var(--shadow-md);
 }
 
 .warning {
-  background-color: var(--warning-color, #ff9800);
-  color: white;
+  background-color: var(--warning-color);
+  color: var(--on-solid-color);
 }
 .warning:hover {
-  background-color: var(--warning-hover, #fb8c00);
+  background-color: var(--warning-hover);
   box-shadow: var(--shadow-md);
 }
 

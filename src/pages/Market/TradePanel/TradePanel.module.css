@@ -14,6 +14,9 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--control-border);
   background-color: var(--control-bg);
+  transition:
+    background-color var(--theme-transition),
+    border-color var(--theme-transition);
 }
 
 .modeButton {
@@ -27,9 +30,9 @@
   letter-spacing: 0.4px;
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .modeButton:hover {
@@ -64,15 +67,17 @@
   font-size: 14px;
   font-variant-numeric: tabular-nums;
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition),
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 .input[type="number"]::-webkit-outer-spin-button,
 .input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
 .input[type="number"],
 .input[type="number"]:hover,
 .input[type="number"]:focus {
@@ -80,7 +85,7 @@
   -moz-appearance: textfield;
 }
 
-/* Кнопки +/- */
+/* +/- controls */
 .adjust {
   width: 32px;
   height: 32px;
@@ -88,13 +93,18 @@
   border-radius: var(--radius-sm);
   background-color: var(--control-bg);
   color: var(--text-color);
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  transition: 0.1s;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition),
+    transform 0.1s ease;
 }
 
 .adjust:hover {

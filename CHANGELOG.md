@@ -20,6 +20,10 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 - Sidebar overlay behavior updated to preserve blur while keeping consistent transparency on hover/focus.
 - Git ignore rules extended for environment files.
 - Project package manager migrated from npm to pnpm (`pnpm-lock.yaml`, Husky/CI/docs updated).
+- Full CSS audit completed: theme-dependent styles unified across pages/components without layout changes.
+- Semantic design tokens expanded (solid text color, status backgrounds, overlay backgrounds) and hardcoded colors replaced in component styles.
+- Mobile viewport handling improved with `svh/dvh` fallbacks for fullscreen layers and sections.
+- CSS quality pass: normalized radii/constants and cleaned malformed comments in UI style modules.
 
 ### Fixed
 
@@ -27,6 +31,7 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 - Hidden options in `CustomSelect` no longer participate in keyboard tab order.
 - Prevented invalid numeric input from reaching trade execution (`NaN`/`Infinity` guardrails).
 - Continuous RAF animations now pause on `visibilitychange` when the tab is hidden and resume on return.
+- Theme switching flicker reduced by aligning color/background/border/shadow transitions and token usage across interactive controls.
 
 ### Removed
 

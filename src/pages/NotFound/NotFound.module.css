@@ -4,11 +4,16 @@
   align-items: center;
   justify-content: center;
   height: 90vh;
+  height: 90svh;
+  height: 90dvh;
   background-color: var(--bg-color);
   color: var(--text-color);
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 .content {
@@ -22,18 +27,21 @@
   margin: 0;
   color: var(--primary-color);
   letter-spacing: 0.04em;
+  transition: color var(--theme-transition);
 }
 
 .text {
   font-size: 1.5rem;
   margin: 0.5rem 0;
   color: var(--text-color);
+  transition: color var(--theme-transition);
 }
 
 .subtext {
   font-size: 1rem;
   margin-bottom: 2rem;
   color: var(--text-secondary);
+  transition: color var(--theme-transition);
 }
 
 .graph {
@@ -53,7 +61,7 @@
   height: 30%;
   border-radius: 999px;
   animation: moveLine 2s infinite ease-in-out;
-  box-shadow: 0 0 12px rgba(100, 108, 255, 0.35);
+  box-shadow: 0 0 12px rgba(var(--primary-color-rgb), 0.35);
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary-color) 40%, transparent);
 }
 

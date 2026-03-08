@@ -11,6 +11,7 @@
   background-size: 200% 100%;
   border: 1px solid var(--border-color);
   animation: shimmer 1.4s ease infinite;
+  transition: border-color var(--theme-transition);
 }
 
 @keyframes shimmer {

@@ -2,11 +2,16 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  font-family: "IBM Plex Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  min-height: 100svh;
+  min-height: 100dvh;
+  font-family: var(--font-family);
   color: var(--text-color);
   background-color: var(--bg-color);
   box-sizing: border-box;
   position: relative;
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 .topbar {
@@ -48,7 +53,7 @@
 }
 
 .mono {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-weight: 500;
   font-size: 1rem;
 }
@@ -74,6 +79,9 @@
   background-size: 200% 100%;
   border: 1px solid var(--border-color);
   animation: shimmer 1.4s ease infinite;
+  transition:
+    background-color var(--theme-transition),
+    border-color var(--theme-transition);
 }
 
 .pageSkeletonTall {

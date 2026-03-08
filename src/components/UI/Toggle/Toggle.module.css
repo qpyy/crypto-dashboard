@@ -20,7 +20,11 @@
   right: 0;
   bottom: 0;
   background-color: var(--control-bg);
-  transition: 0.4s;
+  transition:
+    background-color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition),
+    color var(--theme-transition);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -38,7 +42,11 @@
   width: 1.4em;
   border-radius: var(--radius-sm);
   background-color: var(--bg-color);
-  transition: transform 0.4s;
+  transition:
+    transform 0.4s ease,
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    box-shadow var(--theme-transition);
 }
 
 .switch input:checked + .slider {
