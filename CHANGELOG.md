@@ -8,15 +8,17 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 
 ### Added
 
-- No changes yet.
+- GitHub Actions CI workflow (`.github/workflows/ci.yml`) for `format:check`, `lint`, `typecheck`, and `build`.
+- ESLint plugins for TanStack Query and accessibility: `@tanstack/eslint-plugin-query`, `eslint-plugin-jsx-a11y`.
 
 ### Changed
 
-- No changes yet.
+- ESLint flat config extended with recommended TanStack Query and JSX accessibility rules.
+- UI interactions in `ConfirmDialog`, `CustomSelect`, and `Sidebar` aligned with stricter a11y requirements.
 
 ### Fixed
 
-- No changes yet.
+- Keyboard support and semantics for interactive UI elements in modal/select/sidebar components.
 
 ### Removed
 
