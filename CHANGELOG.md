@@ -8,15 +8,11 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 
 ### Added
 
-- Husky git-hooks with `pre-commit` and `pre-push` quality gates.
-- `lint-staged` for staged lint autofix on commit.
-- Prettier setup (`.prettierrc`, `.prettierignore`) with format scripts.
+- No changes yet.
 
 ### Changed
 
-- ESLint configuration strengthened for production workflow and stricter code quality checks.
-- `package.json` scripts extended with `typecheck`, `lint:fix`, and `prepare`.
-- Pre-commit flow updated to run Prettier before ESLint.
+- No changes yet.
 
 ### Fixed
 
@@ -25,6 +21,20 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 ### Removed
 
 - No changes yet.
+
+## [0.3.0] - 2026-03-08
+
+### Added
+
+- Husky git-hooks with `pre-commit` and `pre-push` quality gates.
+- `lint-staged` for staged lint autofix on commit.
+- Prettier setup (`.prettierrc`, `.prettierignore`) with format scripts.
+
+### Changed
+
+- ESLint configuration strengthened for production workflow and stricter code quality checks.
+- `package.json` scripts extended with `typecheck`, `lint:fix`, `format`, `format:check`, and `prepare`.
+- Pre-commit flow updated to run Prettier before ESLint.
 
 ## [0.2.0] - 2026-03-08
 
