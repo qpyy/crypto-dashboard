@@ -28,7 +28,12 @@ export const applyTrade = (
   command: TradeCommand,
   deps: TradingDeps,
 ): TradingResult => {
-  if (command.price <= 0 || command.amount <= 0) {
+  if (
+    !Number.isFinite(command.price) ||
+    !Number.isFinite(command.amount) ||
+    command.price <= 0 ||
+    command.amount <= 0
+  ) {
     return createUnchangedResult(state, "INVALID_INPUT");
   }
 

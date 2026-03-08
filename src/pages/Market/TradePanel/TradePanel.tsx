@@ -14,6 +14,7 @@ export default function TradePanel() {
   const [side, setSide] = useState<PositionSide>("long");
   const [amount, setAmount] = useState(0.0);
   const step = 0.0001;
+  const roundAmount = (value: number) => Math.round(value * 1e5) / 1e5;
 
   const position = portfolio.find((a) => a.id === selectedAsset);
   const longAmount = Math.max(position?.amount ?? 0, 0);
@@ -21,21 +22,39 @@ export default function TradePanel() {
   const maxCloseAmount = side === "long" ? longAmount : shortAmount;
   const assetName = assetNames[selectedAsset] || selectedAsset;
 
-  const decrement = () => setAmount((prev) => Math.max(Math.round((prev - step) * 1e5) / 1e5, 0));
-  const increment = () => setAmount((prev) => Math.round((prev + step) * 1e5) / 1e5);
+  const decrement = () => setAmount((prev) => Math.max(roundAmount(prev - step), 0));
+  const increment = () => setAmount((prev) => roundAmount(prev + step));
 
   const handleChange = (value: string) => {
-    const num = Math.max(Number(value), 0);
-    setAmount(Math.round(num * 1e5) / 1e5);
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) {
+      setAmount(0);
+      return;
+    }
+    setAmount(Math.max(roundAmount(parsed), 0));
   };
 
   const handleBuy = () => {
-    if (!selectedAsset || price <= 0 || amount <= 0) return;
+    if (
+      !selectedAsset ||
+      !Number.isFinite(price) ||
+      price <= 0 ||
+      !Number.isFinite(amount) ||
+      amount <= 0
+    )
+      return;
     buy(selectedAsset, assetName, price, amount, side);
   };
 
   const handleSell = () => {
-    if (!selectedAsset || amount <= 0) return;
+    if (
+      !selectedAsset ||
+      !Number.isFinite(price) ||
+      price <= 0 ||
+      !Number.isFinite(amount) ||
+      amount <= 0
+    )
+      return;
     sell(selectedAsset, assetName, price, amount, side);
   };
 
@@ -48,8 +67,10 @@ export default function TradePanel() {
     buy(selectedAsset, assetName, price, maxCloseAmount, side);
   };
 
-  const disableOpen = price <= 0 || amount <= 0;
-  const disableClose = price <= 0 || amount <= 0 || amount > maxCloseAmount;
+  const isPriceValid = Number.isFinite(price) && price > 0;
+  const isAmountValid = Number.isFinite(amount) && amount > 0;
+  const disableOpen = !isPriceValid || !isAmountValid;
+  const disableClose = !isPriceValid || !isAmountValid || amount > maxCloseAmount;
   const buyLabel = side === "short" ? "Покрыть" : "Купить";
   const sellLabel = side === "short" ? "Шорт" : "Продать";
   const closeAllLabel = side === "short" ? "Покрыть всё" : "Продать всё";
@@ -81,7 +102,7 @@ export default function TradePanel() {
         </button>
         <input
           type="number"
-          value={amount.toFixed(4)}
+          value={(Number.isFinite(amount) ? amount : 0).toFixed(4)}
           min={0}
           step={step}
           onChange={(e) => handleChange(e.target.value)}

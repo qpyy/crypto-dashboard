@@ -101,14 +101,19 @@ const CustomSelect: FC<Props> = ({
         {selectedLabel}
         <span className={`${styles.arrow} ${isOpen ? styles.open : ""}`} />
       </div>
-      <ul className={`${styles.options} ${isOpen ? styles.show : ""}`} id={listId} role="listbox">
+      <ul
+        className={`${styles.options} ${isOpen ? styles.show : ""}`}
+        id={listId}
+        role="listbox"
+        aria-hidden={!isOpen}
+      >
         {options.map((opt) => (
           <li
             key={opt.value}
             className={styles.option}
             onClick={() => handleSelect(opt.value)}
             onKeyDown={(e) => handleOptionKeyDown(e, opt.value)}
-            tabIndex={0}
+            tabIndex={isOpen ? 0 : -1}
             role="option"
             aria-selected={opt.value === value}
           >
