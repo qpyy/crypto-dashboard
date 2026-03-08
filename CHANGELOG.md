@@ -7,16 +7,18 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 ## [Unreleased]
 
 ### Added
-- Add new user-facing features here.
+- Pure trading domain module in `src/domain/trading`.
+- Trading engine documentation in `docs/trading-engine.md`.
 
 ### Changed
-- Add updates to existing behavior here.
+- `usePortfolio` store now uses thin wrappers and delegates trade logic to `applyTrade`.
+- Trade feedback (snackbar messages) is now derived from domain events and error codes.
 
 ### Fixed
-- Add bug fixes here.
+- Reduced coupling between business logic and UI state layer.
 
 ### Removed
-- Add removed/deprecated behavior here.
+- Trade calculation branches from `usePortfolio` store implementation.
 
 ## [0.1.0] - 2026-03-08
 
@@ -31,4 +33,3 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 
 ### Fixed
 - ESLint config crash caused by missing `simple-import-sort` plugin import.
-
