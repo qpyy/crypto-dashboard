@@ -86,6 +86,12 @@ src/
 
 - Оптимизированные стили и фон.
 
+## История изменений и вклад
+
+- Changelog: `CHANGELOG.md`
+- Contribution guide: `CONTRIBUTING.md`
+- Commit template: `.gitmessage.txt`
+
 ## Лицензия
 
 Все права защищены.

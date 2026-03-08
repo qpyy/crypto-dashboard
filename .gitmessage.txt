@@ -1,0 +1,16 @@
+type(scope): short summary
+
+# Body (optional):
+# - what changed
+# - why it changed
+# - impact/risk
+
+# Footer (optional):
+# BREAKING CHANGE: describe breaking behavior
+# Closes #issue
+
+# Examples:
+# feat(portfolio): add persistent profile id
+# fix(statistics): correct net profit calculation
+# chore(eslint): enable import sorting
+
