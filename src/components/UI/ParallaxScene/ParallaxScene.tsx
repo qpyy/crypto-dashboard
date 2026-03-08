@@ -29,6 +29,7 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
     let orientationActive = false;
     let permissionRequested = false;
     let cancelled = false;
+    let animationActive = false;
 
     const handlePointerMove = (e: PointerEvent) => {
       const x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -122,6 +123,8 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
     };
 
     const animate = () => {
+      if (!animationActive) return;
+
       current.current.x += (target.current.x - current.current.x) * 0.06;
       current.current.y += (target.current.y - current.current.y) * 0.06;
 
@@ -132,6 +135,28 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
       }
 
       rafId.current = requestAnimationFrame(animate);
+    };
+
+    const stopAnimation = () => {
+      animationActive = false;
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+        rafId.current = null;
+      }
+    };
+
+    const startAnimation = () => {
+      if (animationActive || cancelled || document.hidden) return;
+      animationActive = true;
+      rafId.current = requestAnimationFrame(animate);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAnimation();
+        return;
+      }
+      startAnimation();
     };
 
     const setupInput = () => {
@@ -161,7 +186,8 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
     };
 
     setupInput();
-    animate();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    startAnimation();
 
     return () => {
       cancelled = true;
@@ -173,7 +199,8 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
       }
       window.removeEventListener("touchend", onFirstInteraction);
       window.removeEventListener("click", onFirstInteraction);
-      if (rafId.current) cancelAnimationFrame(rafId.current);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      stopAnimation();
     };
   }, []);
 

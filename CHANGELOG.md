@@ -10,19 +10,26 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 
 - GitHub Actions CI workflow (`.github/workflows/ci.yml`) for `format:check`, `lint`, `typecheck`, and `build`.
 - ESLint plugins for TanStack Query and accessibility: `@tanstack/eslint-plugin-query`, `eslint-plugin-jsx-a11y`.
+- `.env.example` template for local environment setup.
 
 ### Changed
 
 - ESLint flat config extended with recommended TanStack Query and JSX accessibility rules.
 - UI interactions in `ConfirmDialog`, `CustomSelect`, and `Sidebar` aligned with stricter a11y requirements.
+- Trade amount/price validation hardened in UI and domain trading layer to reject non-finite input values.
+- Sidebar overlay behavior updated to preserve blur while keeping consistent transparency on hover/focus.
+- Git ignore rules extended for environment files.
 
 ### Fixed
 
 - Keyboard support and semantics for interactive UI elements in modal/select/sidebar components.
+- Hidden options in `CustomSelect` no longer participate in keyboard tab order.
+- Prevented invalid numeric input from reaching trade execution (`NaN`/`Infinity` guardrails).
+- Continuous RAF animations now pause on `visibilitychange` when the tab is hidden and resume on return.
 
 ### Removed
 
-- No changes yet.
+- Tracked `.env` file removed from repository history of active files (kept local only).
 
 ## [0.3.0] - 2026-03-08
 

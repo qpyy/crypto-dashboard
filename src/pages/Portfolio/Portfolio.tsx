@@ -13,7 +13,8 @@ export default function Portfolio() {
   const currentY = useRef(50);
 
   useEffect(() => {
-    let rafId = 0;
+    let rafId: number | null = null;
+    let animationActive = false;
 
     const handleMouseMove = (e: MouseEvent) => {
       const y = (e.clientY / window.innerHeight) * 100;
@@ -21,17 +22,42 @@ export default function Portfolio() {
     };
 
     const animate = () => {
+      if (!animationActive) return;
       currentY.current += (targetY.current - currentY.current) * 0.02;
       document.documentElement.style.setProperty("--divider-gradient-pos", `${currentY.current}%`);
       rafId = requestAnimationFrame(animate);
     };
 
+    const stopAnimation = () => {
+      animationActive = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
+
+    const startAnimation = () => {
+      if (animationActive || document.hidden) return;
+      animationActive = true;
+      rafId = requestAnimationFrame(animate);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAnimation();
+        return;
+      }
+      startAnimation();
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    animate();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    startAnimation();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      if (rafId) cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      stopAnimation();
     };
   }, []);
 
