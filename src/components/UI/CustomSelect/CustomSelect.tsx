@@ -62,6 +62,13 @@ const CustomSelect: FC<Props> = ({
     }
   };
 
+  const handleOptionKeyDown = (e: KeyboardEvent<HTMLLIElement>, optionValue: string) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleSelect(optionValue);
+    }
+  };
+
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -100,6 +107,8 @@ const CustomSelect: FC<Props> = ({
             key={opt.value}
             className={styles.option}
             onClick={() => handleSelect(opt.value)}
+            onKeyDown={(e) => handleOptionKeyDown(e, opt.value)}
+            tabIndex={0}
             role="option"
             aria-selected={opt.value === value}
           >

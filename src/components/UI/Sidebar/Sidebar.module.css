@@ -157,12 +157,16 @@
   height: 100vh;
   height: 100svh;
   height: 100dvh;
+  border: 0;
+  margin: 0;
+  padding: 0;
   background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  cursor: pointer;
 }
 
 .overlay.open {

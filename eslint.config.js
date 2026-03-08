@@ -1,6 +1,8 @@
 import js from "@eslint/js";
+import tanstackQuery from "@tanstack/eslint-plugin-query";
 import { globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
@@ -17,8 +19,10 @@ export default tseslint.config([
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
+      jsxA11y.flatConfigs.recommended,
       reactHooks.configs["recommended-latest"],
       reactRefresh.configs.vite,
+      tanstackQuery.configs["flat/recommended"],
     ],
     rules: {
       "simple-import-sort/imports": "error",

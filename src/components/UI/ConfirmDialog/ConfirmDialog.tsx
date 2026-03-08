@@ -19,43 +19,52 @@ export default function ConfirmDialog({ message, onConfirm, onCancel }: ConfirmD
       'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
     );
     focusable?.[0]?.focus();
-  }, []);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Escape") {
-      e.stopPropagation();
-      onCancel();
-      return;
-    }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onCancel();
+        return;
+      }
 
-    if (e.key !== "Tab") return;
+      if (e.key !== "Tab") return;
 
-    const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
-    );
-    if (!focusable || focusable.length === 0) return;
+      const currentFocusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
+      );
+      if (!currentFocusable || currentFocusable.length === 0) return;
 
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    const active = document.activeElement as HTMLElement | null;
+      const first = currentFocusable[0];
+      const last = currentFocusable[currentFocusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
 
-    if (e.shiftKey && active === first) {
-      e.preventDefault();
-      last.focus();
-      return;
-    }
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+        return;
+      }
 
-    if (!e.shiftKey && active === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  };
+      if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onCancel]);
 
   return createPortal(
-    <div className={styles.overlay} onClick={onCancel} onKeyDown={handleKeyDown} tabIndex={-1}>
+    <div className={styles.root}>
+      <button
+        className={styles.overlay}
+        type="button"
+        aria-label="Close dialog"
+        onClick={onCancel}
+      />
       <div
         className={styles.dialog}
-        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby={messageId}

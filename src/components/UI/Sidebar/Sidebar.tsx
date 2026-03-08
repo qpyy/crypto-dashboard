@@ -15,10 +15,14 @@ export default function Sidebar() {
 
   return (
     <>
-      <div
-        className={`${styles.overlay} ${open ? styles.open : ""}`}
-        onClick={() => setOpen(false)}
-      />
+      {open && (
+        <button
+          type="button"
+          className={`${styles.overlay} ${styles.open}`}
+          onClick={() => setOpen(false)}
+          aria-label="Close sidebar"
+        />
+      )}
 
       <div className={`${styles.sidebar} ${open ? styles.open : ""}`}>
         <div className={styles.stats}>
