@@ -20,6 +20,7 @@ export type Operation = {
 };
 
 export type PortfolioState = {
+  profileId: string;
   portfolio: Asset[];
   operations: Operation[];
   buy: (id: string, name: string, price: number, amount: number, side: PositionSide) => void;

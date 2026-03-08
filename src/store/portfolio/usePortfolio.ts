@@ -9,6 +9,7 @@ const MAX_OPERATIONS = 1000;
 export const usePortfolio = create<PortfolioState>()(
   persist(
     (set) => ({
+      profileId: uuidv4(),
       portfolio: [{ id: "usd", name: "USD", amount: 1_000_000, avgPrice: 1 }],
       operations: [],
 
@@ -241,23 +242,28 @@ export const usePortfolio = create<PortfolioState>()(
         }),
 
       reset: () =>
-        set({
+        set((state) => ({
+          profileId: state.profileId,
           portfolio: [{ id: "usd", name: "USD", amount: 1_000_000, avgPrice: 1 }],
           operations: [],
-        }),
+        })),
     }),
     {
       name: "portfolio-storage",
-      version: 2,
+      version: 3,
       migrate: (state) => {
         if (!state) return state;
-        const typedState = state as PortfolioState;
+        const typedState = state as Partial<PortfolioState>;
         const operations = typedState.operations?.map((op) => ({
           ...op,
           operationId: op.operationId ?? uuidv4(),
           side: (op as Operation).side ?? "long",
         }));
-        return { ...typedState, operations };
+        return {
+          ...typedState,
+          profileId: typedState.profileId ?? uuidv4(),
+          operations,
+        };
       },
     }
   )
