@@ -16,6 +16,13 @@
 5. Open PR or merge to `main`.
 6. Deploy with `corepack pnpm run deploy` after merge to `main`.
 
+## Architecture Docs
+
+Before changing trading/store logic, read:
+
+- `docs/state-architecture.md`
+- `docs/trading-engine.md`
+
 ## Quality Gates (Husky)
 
 Hooks are configured via Husky and run automatically:
