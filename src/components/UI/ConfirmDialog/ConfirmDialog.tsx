@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
-import styles from "./ConfirmDialog.module.css";
+
 import Button from "../Button/Button";
+import styles from "./ConfirmDialog.module.css";
 
 type ConfirmDialogProps = {
   message: string;

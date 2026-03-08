@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import type { MarketState } from "../../types";
 
 export const useMarket = create<MarketState>((set) => ({

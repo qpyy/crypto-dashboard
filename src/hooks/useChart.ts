@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
+
 import { fetchChart } from "../api/prices";
-import type { ChartPoint } from "../types";
 import { useSnackbar } from "../store/snackbar/snackbar";
+import type { ChartPoint } from "../types";
 
 export const useChart = (id: string, days = 1) => {
   const { showSnackbar } = useSnackbar();

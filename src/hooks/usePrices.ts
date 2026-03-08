@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
+
 import { fetchPrices } from "../api/prices";
-import type { PricesResponse } from "../types";
 import { useSnackbar } from "../store/snackbar/snackbar";
+import type { PricesResponse } from "../types";
 
 export const usePrices = () => {
   const { showSnackbar } = useSnackbar();

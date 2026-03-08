@@ -1,5 +1,6 @@
-import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
+import { create } from "zustand";
+
 import type { SnackbarItem, SnackbarType } from "../../types/snackbar";
 
 interface SnackbarState {

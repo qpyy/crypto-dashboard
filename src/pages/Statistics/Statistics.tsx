@@ -1,10 +1,11 @@
 import { useState } from "react";
-import OperationsFilter from "./OperationsFilter/OperationsFilter";
-import OperationsList from "./OperationsList/OperationsList";
-import StatsCards, { type StatCard } from "./StatsCards/StatsCards";
+
 import { usePortfolio } from "../../store/portfolio/usePortfolio";
 import { useStatistics } from "../../store/statistics/useStatistics";
+import OperationsFilter from "./OperationsFilter/OperationsFilter";
+import OperationsList from "./OperationsList/OperationsList";
 import styles from "./Statistics.module.css";
+import StatsCards, { type StatCard } from "./StatsCards/StatsCards";
 
 export default function Statistics() {
   const { totalSpent, totalEarned, netProfit, operationsCount } = useStatistics();

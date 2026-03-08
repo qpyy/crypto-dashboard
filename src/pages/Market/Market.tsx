@@ -1,7 +1,7 @@
-import TradePanel from "./TradePanel/TradePanel";
-import PriceChart from "./PriceChart/PriceChart";
 import DashboardHeader from "./DashboardHeader/DashboardHeader";
 import styles from "./Market.module.css";
+import PriceChart from "./PriceChart/PriceChart";
+import TradePanel from "./TradePanel/TradePanel";
 
 export default function Market() {
   return (

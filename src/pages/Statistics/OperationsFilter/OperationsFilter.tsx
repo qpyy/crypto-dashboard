@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import Button from "../../../components/UI/Button/Button";
 import CustomInput from "../../../components/UI/CustomInput/CustomInput";
 import CustomSelect from "../../../components/UI/CustomSelect/CustomSelect";
-import { useDebounce } from "../../../hooks/useDebounce";
 import { DEBOUNCE_DELAY, TYPE_OPTIONS } from "../../../constants/filter";
 import { filterOperations } from "../../../helpers/filter";
+import { useDebounce } from "../../../hooks/useDebounce";
 import type { Operation } from "../../../types";
 import styles from "./OperationsFilter.module.css";
 
@@ -38,13 +39,17 @@ export default function OperationsFilter({ operations, onFilterChange }: Props) 
     setFilters({ asset: "", type: "", dateFrom: "", dateTo: "" });
   };
 
+  const { type, dateFrom, dateTo } = filters;
+
   useEffect(() => {
     const filtered = filterOperations(operations, {
-      ...filters,
       asset: debouncedAsset,
+      type,
+      dateFrom,
+      dateTo,
     });
     onFilterChange(filtered);
-  }, [debouncedAsset, filters.type, filters.dateFrom, filters.dateTo, operations, onFilterChange]);
+  }, [debouncedAsset, type, dateFrom, dateTo, operations, onFilterChange]);
 
   return (
     <div className={styles.wrapper}>

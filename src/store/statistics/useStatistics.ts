@@ -1,7 +1,9 @@
 import { useMemo } from "react";
-import { usePortfolio } from "../portfolio/usePortfolio";
-import { useMarket, selectPrices } from "../market/useMarket";
+
+import { INITIAL_USD_BALANCE, USD_ASSET_ID } from "../../constants/portfolio";
 import type { AssetDistribution, Statistics } from "../../types";
+import { selectPrices, useMarket } from "../market/useMarket";
+import { usePortfolio } from "../portfolio/usePortfolio";
 
 export const useStatistics = (): Statistics => {
   const operations = usePortfolio((s) => s.operations);
@@ -17,10 +19,10 @@ export const useStatistics = (): Statistics => {
       if (op.type === "sell") totalEarned += op.total;
     }
 
-    const usdBalance = portfolio.find((a) => a.id === "usd")?.amount || 0;
+    const usdBalance = portfolio.find((a) => a.id === USD_ASSET_ID)?.amount ?? INITIAL_USD_BALANCE;
 
-    const allAssets: AssetDistribution[] = portfolio
-      .filter((a) => a.id !== "usd")
+    const assetDistribution: AssetDistribution[] = portfolio
+      .filter((a) => a.id !== USD_ASSET_ID)
       .map((asset) => {
         const currentPrice = prices[asset.id] || 0;
         const value = asset.amount * currentPrice;
@@ -36,9 +38,11 @@ export const useStatistics = (): Statistics => {
         };
       });
 
-    const unrealizedProfit = allAssets.reduce((sum, a) => sum + a.profit, 0);
-    const realizedProfit = totalEarned - totalSpent;
-    const netProfit = realizedProfit + unrealizedProfit;
+    const assetsMarketValue = assetDistribution.reduce((sum, asset) => sum + asset.value, 0);
+    const equity = usdBalance + assetsMarketValue;
+    const netProfit = equity - INITIAL_USD_BALANCE;
+    const unrealizedProfit = assetDistribution.reduce((sum, asset) => sum + asset.profit, 0);
+    const realizedProfit = netProfit - unrealizedProfit;
 
     return {
       totalSpent,
@@ -48,7 +52,7 @@ export const useStatistics = (): Statistics => {
       unrealizedProfit,
       netProfit,
       operationsCount: operations.length,
-      assetDistribution: allAssets,
+      assetDistribution,
     };
   }, [operations, portfolio, prices]);
 };

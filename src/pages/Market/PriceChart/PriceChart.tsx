@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
-import { useMarket, selectSelectedAsset } from "../../../store/market/useMarket";
+
 import { useChart } from "../../../hooks/useChart";
+import { selectSelectedAsset,useMarket } from "../../../store/market/useMarket";
 import styles from "./PriceChart.module.css";
 
 const ReusableLineChart = lazy(

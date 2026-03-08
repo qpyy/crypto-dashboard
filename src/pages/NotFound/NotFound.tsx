@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import Button from "../../components/UI/Button/Button";
 import styles from "./NotFound.module.css";
 

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+
 import { useMarket } from "../store/market/useMarket";
-import { usePrices } from "./usePrices";
 import type { PricesResponse } from "../types";
+import { usePrices } from "./usePrices";
 
 export const useMarketPrices = () => {
   const setPrices = useMarket((s) => s.setPrices);

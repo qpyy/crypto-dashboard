@@ -1,4 +1,5 @@
 import { Sector } from "recharts";
+
 import { formatYAxisTick } from "../../../helpers/format";
 
 interface ActiveShapeProps {

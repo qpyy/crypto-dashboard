@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import type { SnackbarItem } from "../../../types/snackbar";
 import styles from "./Snackbar.module.css";
 

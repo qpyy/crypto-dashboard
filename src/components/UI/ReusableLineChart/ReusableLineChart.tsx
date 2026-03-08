@@ -1,19 +1,20 @@
 import { useMemo, useState } from "react";
 import {
-  AreaChart,
   Area,
+  AreaChart,
+  Brush,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-  Brush,
 } from "recharts";
-import { useTheme } from "../../../store/theme/useTheme";
-import styles from "./LineChart.module.css";
-import { formatYAxisTick } from "../../../helpers/format";
+
 import { chartThemeColors } from "../../../constants/colors";
+import { formatYAxisTick } from "../../../helpers/format";
+import { useTheme } from "../../../store/theme/useTheme";
 import type { ReusableLineChartProps } from "../../../types/chart";
+import styles from "./LineChart.module.css";
 
 export default function ReusableLineChart({
   data,

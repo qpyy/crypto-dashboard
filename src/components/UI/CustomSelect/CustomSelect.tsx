@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect, useId, type KeyboardEvent } from "react";
 import type { FC } from "react";
+import { type KeyboardEvent,useEffect, useId, useRef, useState } from "react";
+
 import styles from "./CustomSelect.module.css";
 
 type Option = {

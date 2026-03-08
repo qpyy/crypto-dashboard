@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from "uuid";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { v4 as uuidv4 } from "uuid";
+
+import { INITIAL_USD_BALANCE, USD_ASSET_ID } from "../../constants/portfolio";
 import type { Asset, Operation, PortfolioState, PositionSide } from "../../types";
 import { useSnackbar } from "../snackbar/snackbar";
 
@@ -10,7 +12,7 @@ export const usePortfolio = create<PortfolioState>()(
   persist(
     (set) => ({
       profileId: uuidv4(),
-      portfolio: [{ id: "usd", name: "USD", amount: 1_000_000, avgPrice: 1 }],
+      portfolio: [{ id: USD_ASSET_ID, name: "USD", amount: INITIAL_USD_BALANCE, avgPrice: 1 }],
       operations: [],
 
       buy: (id, name, price, amount, side) =>
@@ -19,7 +21,7 @@ export const usePortfolio = create<PortfolioState>()(
 
           const { showSnackbar } = useSnackbar.getState();
           let nextPortfolio = state.portfolio.map((asset) => ({ ...asset }));
-          const usd = nextPortfolio.find((a) => a.id === "usd");
+          const usd = nextPortfolio.find((a) => a.id === USD_ASSET_ID);
 
           if (!usd) {
             showSnackbar("Не удалось найти USD баланс", "error");
@@ -135,7 +137,7 @@ export const usePortfolio = create<PortfolioState>()(
 
           const { showSnackbar } = useSnackbar.getState();
           let nextPortfolio = state.portfolio.map((asset) => ({ ...asset }));
-          const usd = nextPortfolio.find((a) => a.id === "usd");
+          const usd = nextPortfolio.find((a) => a.id === USD_ASSET_ID);
 
           if (!usd) {
             showSnackbar("Не удалось найти USD баланс", "error");
@@ -244,7 +246,7 @@ export const usePortfolio = create<PortfolioState>()(
       reset: () =>
         set((state) => ({
           profileId: state.profileId,
-          portfolio: [{ id: "usd", name: "USD", amount: 1_000_000, avgPrice: 1 }],
+          portfolio: [{ id: USD_ASSET_ID, name: "USD", amount: INITIAL_USD_BALANCE, avgPrice: 1 }],
           operations: [],
         })),
     }),

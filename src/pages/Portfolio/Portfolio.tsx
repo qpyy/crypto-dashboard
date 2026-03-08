@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useRef } from "react";
+
 import { useStatistics } from "../../store/statistics/useStatistics";
 import AssetCard from "./AssetCard/AssetCard";
 import styles from "./Portfolio.module.css";

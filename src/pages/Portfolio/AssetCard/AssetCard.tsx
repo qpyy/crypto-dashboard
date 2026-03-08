@@ -1,6 +1,7 @@
 import type { FC } from "react";
-import { getAssetIcon } from "../../../helpers/icons";
+
 import { formatCurrency } from "../../../helpers/format";
+import { getAssetIcon } from "../../../helpers/icons";
 import cardStyles from "./AssetCard.module.css";
 
 type Props = {

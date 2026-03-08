@@ -1,14 +1,15 @@
 import { Suspense, useEffect } from "react";
-import { Outlet } from "react-router-dom";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import { Outlet } from "react-router-dom";
+
+import Footer from "../../components/UI/Footer/Footer";
+import ParallaxScene from "../../components/UI/ParallaxScene/ParallaxScene";
 import Sidebar from "../../components/UI/Sidebar/Sidebar";
+import SnackbarContainer from "../../components/UI/Snackbar/SnackbarContainer";
 import { Toggle } from "../../components/UI/Toggle/Toggle";
+import { useSnackbar } from "../../store/snackbar/snackbar";
 import { useTheme } from "../../store/theme/useTheme";
 import styles from "./MainLayout.module.css";
-import SnackbarContainer from "../../components/UI/Snackbar/SnackbarContainer";
-import { useSnackbar } from "../../store/snackbar/snackbar";
-import ParallaxScene from "../../components/UI/ParallaxScene/ParallaxScene";
-import Footer from "../../components/UI/Footer/Footer";
 
 export default function MainLayout() {
   const { theme, toggleTheme } = useTheme();

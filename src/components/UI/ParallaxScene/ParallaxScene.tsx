@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+
 import styles from "./ParallaxScene.module.css";
 
 type Variant = "positive" | "negative" | "neutral";

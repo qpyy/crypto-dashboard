@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Sidebar.module.css";
-import ResetButton from "../../ResetButton/ResetButton";
-import { useMarket, selectPrices } from "../../../store/market/useMarket";
-import { assetNames, ASSETS } from "../../../constants/assets";
+
 import Menu from "../../../assets/icons/Menu.svg";
+import { assetNames, ASSETS } from "../../../constants/assets";
+import { selectPrices,useMarket } from "../../../store/market/useMarket";
+import ResetButton from "../../ResetButton/ResetButton";
+import styles from "./Sidebar.module.css";
 
 export default function Sidebar() {
   const prices = useMarket(selectPrices);

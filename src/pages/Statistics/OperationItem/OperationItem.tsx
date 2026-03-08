@@ -1,5 +1,5 @@
-import type { Operation } from "../../../types";
 import { getAssetIcon } from "../../../helpers/icons";
+import type { Operation } from "../../../types";
 import styles from "./OperationItem.module.css";
 
 interface Props {
