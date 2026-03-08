@@ -1,4 +1,4 @@
-import { Cell,Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 import { PIE_COLORS } from "../../../constants/colors";
 import type { PieChartData } from "../../../types";

@@ -9,14 +9,7 @@ interface ToggleProps {
   ariaLabel?: string;
 }
 
-export function Toggle({
-  checked,
-  onChange,
-  className,
-  onIcon,
-  offIcon,
-  ariaLabel,
-}: ToggleProps) {
+export function Toggle({ checked, onChange, className, onIcon, offIcon, ariaLabel }: ToggleProps) {
   return (
     <label className={`${styles.switch} ${className || ""}`}>
       <input

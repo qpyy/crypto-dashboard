@@ -10,7 +10,10 @@ import type {
 } from "./types";
 import { calculateWeightedAverage, clonePortfolio, findAsset, replaceAsset } from "./utils";
 
-const createUnchangedResult = (state: Readonly<TradingState>, error?: TradingErrorCode): TradingResult => ({
+const createUnchangedResult = (
+  state: Readonly<TradingState>,
+  error?: TradingErrorCode,
+): TradingResult => ({
   changed: false,
   state: {
     portfolio: state.portfolio,
@@ -23,7 +26,7 @@ const createUnchangedResult = (state: Readonly<TradingState>, error?: TradingErr
 export const applyTrade = (
   state: Readonly<TradingState>,
   command: TradeCommand,
-  deps: TradingDeps
+  deps: TradingDeps,
 ): TradingResult => {
   if (command.price <= 0 || command.amount <= 0) {
     return createUnchangedResult(state, "INVALID_INPUT");
@@ -46,7 +49,11 @@ export const applyTrade = (
     nextPortfolio = replaceAsset(nextPortfolio, command.assetId, asset);
   };
 
-  const addOperation = (action: TradeCommand["action"], side: TradeCommand["side"], amount: number) => {
+  const addOperation = (
+    action: TradeCommand["action"],
+    side: TradeCommand["side"],
+    amount: number,
+  ) => {
     operationsToAdd.push(
       buildOperation(
         {
@@ -57,8 +64,8 @@ export const applyTrade = (
           price: command.price,
           amount,
         },
-        deps
-      )
+        deps,
+      ),
     );
   };
 
@@ -71,7 +78,7 @@ export const applyTrade = (
         side,
         price: command.price,
         amount,
-      })
+      }),
     );
   };
 

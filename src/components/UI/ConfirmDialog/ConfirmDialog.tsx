@@ -16,7 +16,7 @@ export default function ConfirmDialog({ message, onConfirm, onCancel }: ConfirmD
 
   useEffect(() => {
     const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
+      'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
     );
     focusable?.[0]?.focus();
   }, []);
@@ -31,7 +31,7 @@ export default function ConfirmDialog({ message, onConfirm, onCancel }: ConfirmD
     if (e.key !== "Tab") return;
 
     const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
+      'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
     );
     if (!focusable || focusable.length === 0) return;
 
@@ -74,6 +74,6 @@ export default function ConfirmDialog({ message, onConfirm, onCancel }: ConfirmD
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

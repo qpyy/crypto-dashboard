@@ -1,11 +1,11 @@
 import { lazy, Suspense } from "react";
 
 import { useChart } from "../../../hooks/useChart";
-import { selectSelectedAsset,useMarket } from "../../../store/market/useMarket";
+import { selectSelectedAsset, useMarket } from "../../../store/market/useMarket";
 import styles from "./PriceChart.module.css";
 
 const ReusableLineChart = lazy(
-  () => import("../../../components/UI/ReusableLineChart/ReusableLineChart")
+  () => import("../../../components/UI/ReusableLineChart/ReusableLineChart"),
 );
 
 export default function PriceChart() {

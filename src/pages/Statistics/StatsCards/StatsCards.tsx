@@ -21,8 +21,8 @@ export default function StatsCards({ stats }: Props) {
               s.highlight === "positive"
                 ? styles.positive
                 : s.highlight === "negative"
-                ? styles.negative
-                : ""
+                  ? styles.negative
+                  : ""
             }`}
           >
             {s.value}

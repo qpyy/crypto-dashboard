@@ -20,7 +20,7 @@ export const calculateWeightedAverage = (
   currentAmount: number,
   currentAvgPrice: number,
   addedAmount: number,
-  price: number
+  price: number,
 ): number => {
   const totalAmount = currentAmount + addedAmount;
 

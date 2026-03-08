@@ -146,8 +146,11 @@ export default function ParallaxScene({ variant = "neutral" }: Props) {
       }
 
       const hasPermissionFn =
-        typeof (DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<"granted" | "denied"> })
-          .requestPermission === "function";
+        typeof (
+          DeviceOrientationEvent as unknown as {
+            requestPermission?: () => Promise<"granted" | "denied">;
+          }
+        ).requestPermission === "function";
 
       if (hasPermissionFn) {
         window.addEventListener("touchend", onFirstInteraction, { passive: true, once: true });

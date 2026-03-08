@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Menu from "../../../assets/icons/Menu.svg";
 import { assetNames, ASSETS } from "../../../constants/assets";
-import { selectPrices,useMarket } from "../../../store/market/useMarket";
+import { selectPrices, useMarket } from "../../../store/market/useMarket";
 import ResetButton from "../../ResetButton/ResetButton";
 import styles from "./Sidebar.module.css";
 

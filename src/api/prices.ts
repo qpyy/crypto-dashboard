@@ -1,5 +1,5 @@
 import { ASSETS } from "../constants/assets";
-import type { ChartPoint,PricesResponse } from "../types";
+import type { ChartPoint, PricesResponse } from "../types";
 import axios from "./axios";
 
 export const fetchPrices = async (): Promise<PricesResponse> => {

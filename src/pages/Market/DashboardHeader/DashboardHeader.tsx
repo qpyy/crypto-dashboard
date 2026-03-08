@@ -2,7 +2,7 @@ import React from "react";
 
 import CustomSelect from "../../../components/UI/CustomSelect/CustomSelect";
 import { assetNames } from "../../../constants/assets";
-import { selectPrice, selectSelectedAsset,useMarket } from "../../../store/market/useMarket";
+import { selectPrice, selectSelectedAsset, useMarket } from "../../../store/market/useMarket";
 import { useStatistics } from "../../../store/statistics/useStatistics";
 import styles from "./DashboardHeader.module.css";
 

@@ -57,7 +57,11 @@ VITE_API_URL=https://api.coingecko.com/api/v3
 npm run dev      # запуск в режиме разработки
 npm run build    # production сборка
 npm run preview  # локальный предпросмотр сборки
+npm run typecheck # проверка TypeScript
 npm run lint     # eslint
+npm run lint:fix # автофикс ESLint
+npm run format   # форматирование Prettier
+npm run format:check # проверка форматирования
 npm run deploy   # деплой на gh-pages
 ```
 
@@ -66,11 +70,22 @@ npm run deploy   # деплой на gh-pages
 - История изменений: `CHANGELOG.md`
 - Правила вклада: `CONTRIBUTING.md`
 - Шаблон commit: `.gitmessage.txt`
+- Код-стайл: Prettier (`.prettierrc`)
+- Git hooks: Husky (`.husky/pre-commit`, `.husky/pre-push`)
+
+`pre-commit`: форматирование/линт staged-файлов через `lint-staged`  
+`pre-push`: `format:check` + `lint` + `typecheck`
 
 Рекомендуется включить шаблон commit-сообщений:
 
 ```bash
 git config commit.template .gitmessage.txt
+```
+
+Инициализация git-hooks:
+
+```bash
+npm run prepare
 ```
 
 ## Деплой на GitHub Pages

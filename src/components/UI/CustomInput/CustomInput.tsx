@@ -1,4 +1,4 @@
-import { forwardRef, type InputHTMLAttributes,useId } from "react";
+import { forwardRef, type InputHTMLAttributes, useId } from "react";
 
 import styles from "./CustomInput.module.css";
 
@@ -33,7 +33,7 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
         {error && <span className={styles.errorText}>{error}</span>}
       </div>
     );
-  }
+  },
 );
 
 CustomInput.displayName = "CustomInput";

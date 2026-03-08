@@ -8,11 +8,24 @@
    - `chore/<short-description>`
 2. Make one logical change per commit.
 3. Run checks before push:
+   - `npm run format:check`
    - `npm run lint`
+   - `npm run typecheck`
    - `npm run build`
 4. Update `CHANGELOG.md` in `Unreleased` for every user-visible change.
 5. Open PR or merge to `main`.
 6. Deploy with `npm run deploy` after merge to `main`.
+
+## Quality Gates (Husky)
+
+Hooks are configured via Husky and run automatically:
+
+- `pre-commit`: `lint-staged` (prettier + eslint --fix for staged files)
+- `pre-push`: `format:check` + full `lint` + `typecheck`
+
+Setup command:
+
+`npm run prepare`
 
 ## Commit Message Format
 
@@ -21,11 +34,13 @@ Use Conventional Commit style:
 `type(scope): short summary`
 
 Examples:
+
 - `feat(portfolio): add persistent profile id`
 - `fix(statistics): correct net profit formula`
 - `chore(eslint): enable import sorting plugin`
 
 Recommended `type` values:
+
 - `feat`
 - `fix`
 - `refactor`
@@ -40,4 +55,3 @@ Recommended `type` values:
 - Move `Unreleased` entries into a version section during release.
 - Use date format `YYYY-MM-DD`.
 - Only include notable changes (feature, bug fix, breaking behavior, UX/API changes).
-

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Button from "../../../components/UI/Button/Button";
 import { assetNames } from "../../../constants/assets";
-import { selectPrice, selectSelectedAsset,useMarket } from "../../../store/market/useMarket";
+import { selectPrice, selectSelectedAsset, useMarket } from "../../../store/market/useMarket";
 import { usePortfolio } from "../../../store/portfolio/usePortfolio";
 import type { PositionSide } from "../../../types";
 import styles from "./TradePanel.module.css";

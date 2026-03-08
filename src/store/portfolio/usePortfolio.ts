@@ -3,7 +3,12 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { INITIAL_USD_BALANCE, USD_ASSET_ID } from "../../constants/portfolio";
-import { applyTrade, type TradeAction, type TradingErrorCode, type TradingEvent } from "../../domain/trading";
+import {
+  applyTrade,
+  type TradeAction,
+  type TradingErrorCode,
+  type TradingEvent,
+} from "../../domain/trading";
 import type { Operation, PortfolioState, PositionSide } from "../../types";
 import type { SnackbarType } from "../../types/snackbar";
 import { useSnackbar } from "../snackbar/snackbar";
@@ -70,7 +75,7 @@ const buildTradeInput = (
   name: string,
   price: number,
   amount: number,
-  side: PositionSide
+  side: PositionSide,
 ): TradeInput => ({
   action,
   id,
@@ -82,7 +87,7 @@ const buildTradeInput = (
 
 const applyPortfolioTrade = (
   state: PortfolioState,
-  input: TradeInput
+  input: TradeInput,
 ): Pick<PortfolioState, "portfolio" | "operations"> | PortfolioState => {
   const result = applyTrade(
     {
@@ -102,7 +107,7 @@ const applyPortfolioTrade = (
       createTimestamp: () => new Date().toISOString(),
       maxOperations: MAX_OPERATIONS,
       usdAssetId: USD_ASSET_ID,
-    }
+    },
   );
 
   const { showSnackbar } = useSnackbar.getState();
@@ -135,10 +140,14 @@ export const usePortfolio = create<PortfolioState>()(
       operations: [],
 
       buy: (id, name, price, amount, side) =>
-        set((state) => applyPortfolioTrade(state, buildTradeInput("buy", id, name, price, amount, side))),
+        set((state) =>
+          applyPortfolioTrade(state, buildTradeInput("buy", id, name, price, amount, side)),
+        ),
 
       sell: (id, name, price, amount, side) =>
-        set((state) => applyPortfolioTrade(state, buildTradeInput("sell", id, name, price, amount, side))),
+        set((state) =>
+          applyPortfolioTrade(state, buildTradeInput("sell", id, name, price, amount, side)),
+        ),
 
       reset: () =>
         set((state) => ({
@@ -164,6 +173,6 @@ export const usePortfolio = create<PortfolioState>()(
           operations,
         };
       },
-    }
-  )
+    },
+  ),
 );

@@ -12,7 +12,7 @@ export const useMarketPrices = () => {
     if (!data) return;
 
     const nextPrices = Object.fromEntries(
-      Object.entries(data as PricesResponse).map(([id, { usd }]) => [id, usd])
+      Object.entries(data as PricesResponse).map(([id, { usd }]) => [id, usd]),
     );
 
     setPrices({ ...nextPrices, usd: 1 });
