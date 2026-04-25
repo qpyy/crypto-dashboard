@@ -19,12 +19,19 @@
   border: 0;
   margin: 0;
   padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
   background-color: var(--overlay-bg-strong);
-  backdrop-filter: blur(3px);
   cursor: pointer;
-  transition:
-    background-color var(--theme-transition),
-    backdrop-filter var(--theme-transition);
+  transition: background-color var(--theme-transition);
+}
+
+.overlay:hover,
+.overlay:active,
+.overlay:focus-visible {
+  background-color: var(--overlay-bg-strong);
+  box-shadow: none;
+  outline: none;
 }
 
 @keyframes fadeIn {

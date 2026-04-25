@@ -15,12 +15,15 @@
 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  transform: translateX(-110%);
+  transform: translate3d(-110%, 0, 0);
   transition:
     transform 0.3s ease,
     background-color var(--theme-transition),
     color var(--theme-transition),
     box-shadow var(--theme-transition);
+  will-change: transform;
+  backface-visibility: hidden;
+  contain: layout paint;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -29,7 +32,7 @@
 }
 
 .sidebar.open {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
   pointer-events: auto;
 }
 
@@ -181,10 +184,7 @@
   appearance: none;
   -webkit-appearance: none;
   background-color: var(--overlay-bg);
-  backdrop-filter: blur(4px);
-  transition:
-    background-color var(--theme-transition),
-    backdrop-filter var(--theme-transition);
+  transition: background-color var(--theme-transition);
   z-index: 1000;
   pointer-events: none;
   cursor: pointer;
@@ -198,7 +198,6 @@
 .overlay:active,
 .overlay:focus-visible {
   background-color: var(--overlay-bg);
-  backdrop-filter: blur(4px);
   box-shadow: none;
   outline: none;
 }
